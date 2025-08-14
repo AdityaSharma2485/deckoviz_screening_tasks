@@ -1,6 +1,5 @@
 streamlit
 pdfplumber
-gTTS
 sentence-transformers
 chromadb
 openai
@@ -8,4 +7,5 @@ google-generativeai
 requests
 Pillow
 reportlab
-
+google-cloud-texttospeech
+google-cloud-texttospeech

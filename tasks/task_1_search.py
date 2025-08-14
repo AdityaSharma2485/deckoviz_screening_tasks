@@ -1,7 +1,7 @@
 import json
 import os
 import re
-from typing import Dict, List, Any
+from typing import Dict, List, Any, Optional
 
 import chromadb
 from chromadb.config import Settings
@@ -18,8 +18,8 @@ PERSONAS_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets"
 COLLECTION_NAME = "personas_collection"
 
 
-_embedding_model: SentenceTransformer | None = None
-_client: chromadb.Client | None = None
+_embedding_model: Optional[SentenceTransformer] = None
+_client: Optional[Any] = None
 _collection = None
 
 
@@ -30,7 +30,7 @@ def _get_embedding_model() -> SentenceTransformer:
     return _embedding_model
 
 
-def _get_client() -> chromadb.Client:
+def _get_client() -> Any:
     global _client
     if _client is None:
         os.makedirs(VDB_DIR, exist_ok=True)

@@ -1,12 +1,8 @@
 import os
-import json
-import time
-from typing import Any, Dict
-
 import streamlit as st
 
 from tasks.task_1_search import initialize_search_engine, perform_search
-from tasks.task_2_audiobook import convert_pdf_to_audio
+from tasks.task_2_audiobook import preprocess_pdf, synthesize_all_voices
 from tasks.task_3_storybook import create_storybook
 
 
@@ -25,10 +21,10 @@ with st.sidebar:
     page = st.radio(
         "Go to",
         ["Natural Language Search", "PDF to Audiobook", "Storybook Creator"],
-        index=0,
+        index=1,  # Start on the audiobook page for convenience
     )
     st.markdown("---")
-    st.caption("Ensure GOOGLE_API_KEY is set for LLM-powered features.")
+    st.info("Ensure your Gemini API Key is set in `.streamlit/secrets.toml` for all AI-powered features.")
 
 
 if page == "Natural Language Search":
@@ -44,27 +40,66 @@ if page == "Natural Language Search":
             st.warning("Please enter a query")
         else:
             with st.spinner("Searching and reasoning with Gemini..."):
-                results: Dict[str, Any] = perform_search(query)
+                results = perform_search(query)
             st.write("Results:")
             st.json(results)
 
 elif page == "PDF to Audiobook":
     st.subheader("Task 2: PDF to Audiobook")
-    pdf = st.file_uploader("Upload a PDF", type=["pdf"])
-    voice = st.radio("Voice/Accent", ["American (Default)", "British", "Australian", "Indian", "Irish", "South African"], horizontal=True)
-    if st.button("Convert to MP3"):
-        if not pdf:
-            st.warning("Please upload a PDF file")
-        else:
-            with st.spinner("Extracting, cleaning, and synthesizing..."):
+    st.markdown("This version pre-processes your PDF and pre-generates all four Edge TTS voice options for instant playback.")
+
+    if "audiobook_text" not in st.session_state:
+        st.session_state["audiobook_text"] = None
+    if "audiobook_paths" not in st.session_state:
+        st.session_state["audiobook_paths"] = None
+    if "last_pdf_name" not in st.session_state:
+        st.session_state["last_pdf_name"] = None
+
+    pdf = st.file_uploader("Upload a PDF", type=["pdf"], key="pdf_upload")
+
+    # If a new PDF is uploaded, clear previous session state and preprocess only
+    if pdf is not None:
+        current_name = getattr(pdf, "name", None)
+        if current_name != st.session_state.get("last_pdf_name"):
+            st.session_state["last_pdf_name"] = current_name
+            st.session_state["audiobook_text"] = None
+            st.session_state["audiobook_paths"] = None
+            with st.spinner("Preprocessing PDF (extracting and cleaning text)..."):
                 try:
-                    out_path = convert_pdf_to_audio(pdf, voice)
-                    st.success("MP3 generated!")
-                    audio_bytes = open(out_path, "rb").read()
-                    st.audio(audio_bytes, format="audio/mp3")
-                    st.download_button("Download MP3", data=audio_bytes, file_name=os.path.basename(out_path))
+                    cleaned_text = preprocess_pdf(pdf)
+                    st.session_state["audiobook_text"] = cleaned_text
+                    st.success("Text extracted!")
                 except Exception as e:
-                    st.error(f"Conversion failed: {e}")
+                    st.error(f"Preprocessing failed: {e}")
+
+    if st.session_state.get("audiobook_text"):
+        with st.expander("View Extracted Text", expanded=False):
+            st.write(st.session_state["audiobook_text"])
+
+        # Generate all voices on-demand via button
+        if st.session_state.get("audiobook_paths") is None:
+            if st.button("Generate Voices (All at once)"):
+                with st.spinner("Generating all voice options..."):
+                    try:
+                        st.session_state["audiobook_paths"] = synthesize_all_voices(st.session_state["audiobook_text"])
+                        st.success("All voices generated!")
+                    except Exception as e:
+                        st.error(f"Voice generation failed: {e}")
+
+        # If voices exist, let the user select and play/download instantly
+        if st.session_state.get("audiobook_paths"):
+            voice = st.radio(
+                "Choose a Voice",
+                ["American Male", "American Female", "British Male", "British Female"],
+                horizontal=True,
+            )
+            chosen_path = st.session_state["audiobook_paths"].get(voice)
+            if chosen_path and os.path.exists(chosen_path):
+                audio_bytes = open(chosen_path, "rb").read()
+                st.audio(audio_bytes, format="audio/mp3")
+                st.download_button("Download MP3", data=audio_bytes, file_name=os.path.basename(chosen_path))
+            else:
+                st.info("Click 'Generate Voices' to produce audio files for playback.")
 
 elif page == "Storybook Creator":
     st.subheader("Task 3: Storybook Creator")

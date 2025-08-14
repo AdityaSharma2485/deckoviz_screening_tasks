@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+.coverage.*
+coverage.xml
+dist/
+build/
+*.egg-info/
+
+# Environments
+.env
+.env.*
+env/
+venv/
+.venv/
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Streamlit secrets
+.streamlit/secrets.toml
+
+# App generated outputs
+assets/outputs/**/*.mp3
+assets/outputs/**/*.pdf
+assets/outputs/**/*.png
+assets/outputs/chroma/**
+assets/outputs/*.mp3
+assets/outputs/*.pdf
+assets/outputs/*.png
+
+# SQLite / local db
+*.sqlite3
+
+
