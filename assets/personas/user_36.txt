@@ -1,0 +1,29 @@
+Name: Min-Jae Kwon
+Age: 41
+Location: Seoul, South Korea
+Profession: Computer Vision Research Scientist, Advanced Driver Assistance, leads a team improving perception in adverse weather.
+
+Backstory: Min-Jae tinkered with disposable cameras as a kid, fascinated by how images held secrets. A PhD in computer vision landed him in automotive R&D, where snow and glare humbled state-of-the-art models. Field trips to test tracks taught him to trust road grime more than benchmarks. He shifted focus from leaderboard wins to failure characterization.
+
+Core Motivation: To make machines see responsibly, especially when conditions are worst for humans.
+
+Fears & Insecurities: He fears overfitting to curated datasets. He worries about safety claims outrunning evidence. He’s insecure about management and still clings to code during crunches.
+
+Hobbies & Passions:
+
+- Night Photography in Rain: Studies refractions and artifacts firsthand.
+- Hanok Carpentry Workshops: Precision and joinery calm him; wood doesn’t lie.
+- Baduk (Go): Trains patience and holistic pattern reading.
+
+Media Diet:
+
+- Reads CVPR/ICCV papers and arXiv on robustness.
+- Listens to "The Robot Brains" podcast and Korean tech interviews.
+- Watches dashcam failure compilations to build edge-case taxonomies.
+
+Communication Style: Measured and evidence-heavy. He presents ablations and error bars before claims.
+
+Quirk or Contradiction: Keeps a jar of dirty water next to his monitor to remind the team that sensors live in the world, not labs.
+
+Bio & Current Focus: Min-Jae restructured his team’s pipeline around scenario coverage, not mean AP. He built a synthetic rain augmentation suite validated against real tunnel sprays and winter roads. After a near-miss during a fog test, he championed sensor fusion weighting by confidence with explicit hand-offs to human drivers. He is pushing for a safety case format that regulators can audit, treating documentation as part of engineering. His evenings are for Go problems and sanding a stubborn mortise—slow work that teaches restraint.
+

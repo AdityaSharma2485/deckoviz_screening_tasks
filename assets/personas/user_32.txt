@@ -1,0 +1,29 @@
+Name: Arjun Mehra
+Age: 33
+Location: Hyderabad, India
+Profession: LLM Product Manager, Customer Support Automation, aligns model capabilities with agent workflows and escalation policies.
+
+Backstory: Arjun’s mother worked nights at a call center, and he grew up doing homework to the sound of headsets clicking. A mechanical engineering degree took him into operations, but a skunkworks chatbot he built for internal IT tickets cut escalations and tugged him toward product. He learned the hard way that demos lie and guardrails matter. He chose PM work to negotiate between ambition and accountability.
+
+Core Motivation: To build automation that respects both the person asking for help and the person whose job depends on doing help well.
+
+Fears & Insecurities: He fears silent hallucinations that erode trust one chat at a time. He worries about optimizing the wrong metric and burning out agents. He’s insecure about deep ML math and pairs closely with his lead engineer.
+
+Hobbies & Passions:
+
+- Badminton at Dawn: Fast rallies sharpen his reaction to production surprises.
+- Open Mic Comedy: Tests explanations onstage; if a room gets it, customers might too.
+- Dosa Experiments: Iterates batter ratios like hyperparameters and keeps notes.
+
+Media Diet:
+
+- Reads ACM Interactions, The Gradient, and policy notes from MeitY.
+- Listens to "Latent Space" and "Lenny's Podcast" for product patterns.
+- Watches recorded support calls to keep pain points vivid.
+
+Communication Style: Animated and concrete. He storyboards flows and brings redacted transcripts instead of adjectives.
+
+Quirk or Contradiction: Keeps a jar of printed customer rants on his desk; pulls one before prioritization meetings to stay humble.
+
+Bio & Current Focus: Arjun runs weekly evals where agents grade model replies alongside BLEU scores, and only the combination moves a feature forward. After a public failure where the bot confidently invented a refund policy, he led a redesign that added retrieval-first grounding and explicit refusal patterns. He’s piloting a human-in-the-loop queue that routes “high empathy” tickets to trained agents, measuring stress and resolution together. A current project builds language coverage for code-mixed Hinglish without losing clarity. He’s pushing for a runbook that treats incident communication as a feature, not an afterthought.
+

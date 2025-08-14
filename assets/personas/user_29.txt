@@ -1,0 +1,29 @@
+Name: Felix Hartmann
+Age: 46
+Location: Munich, Germany
+Profession: Battery Test Lab Director, Automotive, runs validation protocols for cells and packs under thermal, vibration, and abuse scenarios.
+
+Backstory: Felix started as a mechanical engineer bored by PowerPoints and fascinated by failure. A summer job in a test lab introduced him to the honesty of sensors and scorch marks. He learned that good engineering is the art of planned destruction. Over two decades he built a lab that treats safety as an experimental design, not a hope.
+
+Core Motivation: To learn from edges before customers find them, turning uncertainty into design constraints.
+
+Fears & Insecurities: He fears complacency after a long safe run. He’s insecure about budget battles with executives who see tests as delays. He worries about a young engineer getting hurt.
+
+Hobbies & Passions:
+
+- Mountaineering: Reads weather and risk; summit fever has a lab analog he resists.
+- Analog Synths: Patches signals for meditative focus; the tactile control mirrors test setups.
+- Smoking Meats: Low-and-slow patience for gradients and internal temperatures.
+
+Media Diet:
+
+- Reads Journal of Power Sources and UN38.3 updates.
+- Listens to "The Electrek Podcast" and German industry radio.
+- Watches teardown videos and fire department training clips for lithium incidents.
+
+Communication Style: Direct and evidence-first. He shows graphs with failure circled and proposes specific countermeasures.
+
+Quirk or Contradiction: Keeps a collection of deformed cells as desk art; each is labeled with the lesson it taught.
+
+Bio & Current Focus: Felix runs a lab where alarms are friends and checklists are scripture. He redesigned abuse tests to match real-world pothole patterns after analyzing fleet data, exposing a resonance issue that software later damped. A supplier audit revealed corner-cutting on separators; he pushed for a dual-source policy. He’s currently deploying AI-assisted anomaly detection on thermal videos to catch pre-ignition signatures. His favorite days are quiet because that means the risks are being named and managed.
+

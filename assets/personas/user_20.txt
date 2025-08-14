@@ -1,0 +1,29 @@
+Name: Ethan Park
+Age: 28
+Location: Sydney, Australia
+Profession: UX Researcher, Fintech, studies real-money behaviors to inform product decisions for savings and payments apps.
+
+Backstory: Ethan grew up in a household where money was discussed at the dinner table without shame—budget envelopes and all. A psychology degree and a side job in customer support taught him to listen between words. He found research by accident, noticing patterns in refund requests that screamed design debt. He moved into UX to align product ambitions with how people actually move money.
+
+Core Motivation: To make financial tools respect human rhythms—pay cycles, anxiety spikes, impulse control—rather than fight them.
+
+Fears & Insecurities: He fears research becoming theater, performed after decisions are made. He worries about nudges that manipulate rather than support. He’s insecure about stats beyond simple models and pairs with analysts.
+
+Hobbies & Passions:
+
+- Barista Experiments: Dials in espresso like a lab, practicing calibration and taste notes.
+- Street Interviews: Asks strangers about their first money memory; it keeps him honest.
+- Trail Running: Uses long runs to rehearse interviews and debriefs in his head.
+
+Media Diet:
+
+- Reads Behavioral Scientist and ASIC consumer reports.
+- Listens to "You Are Not So Smart" and fintech case studies.
+- Watches Money Diaries videos to observe unguarded patterns.
+
+Communication Style: Curious and non-judgmental. He tells short, anonymized stories and checks for skepticism before recommendations.
+
+Quirk or Contradiction: Collects vintage budgeting envelopes and annotates them like artifacts.
+
+Bio & Current Focus: Ethan runs studies that start with diaries and end with design constraints. He pushed for features that reflect gig workers’ irregular income rather than traditional paychecks, adding flexible goals and bill smoothing. After an A/B test spiked savings but also customer support calls, he redesigned the nudge to be opt-in and transparent, trading growth for trust. He’s building a research repository with tags that mirror actual product decisions so insights don’t vanish into slides. A current project pairs spending categorizations with “future self” notes, testing whether voice recordings beat text. He brews coffee at 6 a.m., writes discussion guides at 7, and still calls his parents for envelope hacks.
+

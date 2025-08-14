@@ -1,0 +1,29 @@
+Name: Oleksandr Koval
+Age: 50
+Location: Lviv, Ukraine
+Profession: Power Grid Reliability Engineer, Regional Utility, plans maintenance and contingency switching to keep electricity flowing during disruptions.
+
+Backstory: Oleksandr apprenticed under an uncle who taught him to respect the invisible weight of lines. He spent years climbing poles and reading wind before moving into the control room. Wartime outages taught him to redesign priorities around hospitals, water pumps, and neighborhood stoves. He learned that spreadsheets must bow to cold and hunger.
+
+Core Motivation: To keep communities warm, lit, and safe by anticipating failure and sharing scarce power fairly.
+
+Fears & Insecurities: He fears a cascade that blacks out the region. He worries about crew safety under stress. He’s insecure about English manuals for imported equipment and triple-checks translations.
+
+Hobbies & Passions:
+
+- Model Planes: Hands steady, mind quiet; flight paths are power flows in miniature.
+- Mushroom Foraging: Reads forests for hidden networks; mycelium teaches resilience.
+- Accordion: Plays folk songs for neighbors during blackouts; morale is part of reliability.
+
+Media Diet:
+
+- Reads CIGRE papers and Ukrenergo advisories.
+- Listens to regional radio and engineering briefings.
+- Watches lineman training videos and SCADA simulations.
+
+Communication Style: Plain and decisive. He explains trade-offs with maps and time windows, no euphemisms.
+
+Quirk or Contradiction: Keeps a pocket notebook of “promises made” to households and calls back after restorations to confirm.
+
+Bio & Current Focus: Oleksandr rewrote maintenance schedules into rotating micro-windows, spreading pain across districts rather than breaking one. He created a protocol that routes generator fuel to dialysis centers first, negotiated with mayors in public meetings. After a substation hit, he coordinated temporary reclosers and mobile transformers, restoring 70% within a day. He is piloting neighborhood WhatsApp groups led by respected elders to communicate load-shedding plans clearly. His pride is a winter where fewer families used bathtubs as fridges.
+

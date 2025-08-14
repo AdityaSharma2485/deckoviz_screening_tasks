@@ -1,0 +1,29 @@
+Name: Haruka Watanabe
+Age: 27
+Location: Fukuoka, Japan
+Profession: Robotics Field Technician, Agritech Startup, maintains autonomous harvesters and trains farmers on usage.
+
+Backstory: Haruka grew up on a small citrus farm, waking at dawn for picking seasons. She studied mechatronics to lighten her parents’ load, then joined a startup that brought robots to fields where labor is scarce. She learned that field dust kills delicate designs and that trust is earned in muddy boots, not demos. Her value is equal parts wrench and empathy.
+
+Core Motivation: To make robots serve farmers without demanding farmers become roboticists.
+
+Fears & Insecurities: She fears a breakdown during peak harvest costing a season’s profit. She worries about being seen as a salesperson rather than support. She’s insecure about giving feedback to engineers who dismiss “edge cases” that are the whole case in fields.
+
+Hobbies & Passions:
+
+- Taiko Drumming: Physical rhythm helps her manage stress and teaches coordinated power.
+- Bike Touring: Long rides between rural towns keep her connected to landscapes.
+- Bento Crafting: Packs sturdy lunches like she designs mounts—compact, reliable, and considerate.
+
+Media Diet:
+
+- Reads Japanese ag extension bulletins and robotics forums.
+- Listens to farmer radio and startup podcasts.
+- Watches teardown and repair videos for small engines.
+
+Communication Style: Respectful, practical, and hands-on. She shows, then explains, then leaves laminated checklists.
+
+Quirk or Contradiction: Keeps silica gel packets in her toolbox and pockets them from every package like talismans.
+
+Bio & Current Focus: Haruka rewired cable runs with dust boots and drip loops after repeated failures, then convinced the design team with photos and error logs. She built a training program that paired elders and younger farmers so knowledge moved both ways. A current project prototypes a quick-release picking arm that tolerates bruising thresholds better. She’s lobbying for spare-part kits priced as subscriptions rather than emergency markups. When she visits her parents, she tests software on their trees first; family orchards don’t lie.
+

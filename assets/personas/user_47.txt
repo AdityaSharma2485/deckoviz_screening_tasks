@@ -1,0 +1,29 @@
+Name: Tasnim Rahman
+Age: 30
+Location: Dhaka, Bangladesh
+Profession: Language Technologist and Data Curator, builds Bangla and code-mixed Banglish corpora for ASR/NLU and designs annotation guidelines for low-resource settings.
+
+Backstory: Tasnim grew up in a family of teachers who argued lovingly over word choices at dinner. In university she hacked together a speech-to-text tool for her aunt’s tutoring center and discovered that models stumble over real Dhaka accents and code-mixing. A stint at a startup taught her that data work is culture work: guidelines decide who the model hears. She chose to stay close to labeling and tooling because that’s where equity begins.
+
+Core Motivation: To make technology hear and understand how people actually speak, not how textbooks imagine they do.
+
+Fears & Insecurities: She fears exporting biases by copying English-first taxonomies. She worries about annotator burnout and underpay. She’s insecure about research clout and publishes cautiously.
+
+Hobbies & Passions:
+
+- Rickshaw Route Mapping: Logs phrases and slang by neighborhood; language is geography.
+- Community Theater: Directs short plays; dialogue timing informs intent labeling.
+- Tea Blending: Experiments with spices; she says recipes are like schemas.
+
+Media Diet:
+
+- Reads ACL papers on low-resource NLP and BLT (Bengali Language Technology) forums.
+- Listens to Bangla radio shows and street interviews for accent coverage.
+- Watches labeling QA streams and open-source tool demos.
+
+Communication Style: Patient and example-rich. She writes guidelines with edge-case vignettes and negotiates disagreements openly.
+
+Quirk or Contradiction: Keeps a shoebox of handwritten slang cards from relatives; analog data beats memory.
+
+Bio & Current Focus: Tasnim runs annotation sprints that start with pay transparency and end with retrospectives on confusing cases. She pushed for phonetic-aware tokenization and punctuation rules that match Bangla rhythm. After discovering gender bias in profession labels, she designed a review protocol with blinded examples and inter-annotator sessions. She’s piloting a community-contributed audio set recorded on low-end phones in noisy markets to reflect real conditions. A current grant funds an open Bangla intent dataset with clear licenses so small teams can build without legal fear. Nights, she stacks slang cards like tarot, reminding herself that language is alive.
+

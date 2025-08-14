@@ -1,2 +1,29 @@
-Name: Priya Sharma. Location: San Francisco, CA. Profession: Product Manager for a climate tech startup. Interests: Deeply involved in urban gardening and community-supported agriculture. Loves experimental cooking and hosting dinner parties. Values: Community building, social impact. Personal Details: Enjoys live music, especially jazz clubs. Smoker.
+Name: Mateo Álvarez
+Age: 29
+Location: Medellín, Colombia
+Profession: Product Manager, Urban Mobility (micromobility startup), designs rider and fleet tools that make short trips safer and more reliable.
+
+Backstory: Mateo’s father worked as a bus conductor on a route that wound through steep hills and tight corners. As a kid, Mateo memorized the cadence of stops and the faces of regulars who relied on the route to make ends meet. In college he studied industrial design, building a capstone prototype for a modular bike rack that local buses actually tested. A fellowship in Mexico City exposed him to the politics of curb space and how design decisions can quietly exclude or include whole neighborhoods.
+
+Core Motivation: To restore dignity to everyday travel by stripping friction out of the small moments that make or break a commute.
+
+Fears & Insecurities: He worries about becoming the kind of technologist who optimizes metrics that displace street vendors and raise rents. He fears shipping features that read well on dashboards but make sidewalks feel less safe. He’s insecure about his non-technical background in a company full of engineers.
+
+Hobbies & Passions:
+
+- Street Photography: Documents informal transit hacks—hand-painted signs, improvised shelters—as a living archive of user ingenuity.
+- Mechanical Keyboards: Assembles custom boards; tuning switches is his way of thinking about tactile feedback in interfaces.
+- Mountain Cycling: Weekend rides on Las Palmas road help him test gradient and braking ideas in his body, not just Figma.
+
+Media Diet:
+
+- Reads CityLab and local planning docs to track the politics behind pilot programs.
+- Listens to "99% Invisible" and "The War on Cars" to keep a designer’s ear tuned to narratives.
+- Follows The Transportist blog and Bogotá’s Secretaría de Movilidad Twitter for regional policy shifts.
+
+Communication Style: Animated and analogy-driven. He sketches constantly and uses props—bus tickets, brake pads—to ground abstract arguments.
+
+Quirk or Contradiction: Carries a tiny notebook where he redraws transit maps from memory on the back pages of meeting agendas.
+
+Bio & Current Focus: Mateo works on the unglamorous parts of mobility—battery swaps, parking zones, low-income pricing—that determine if a service truly works. He fights for features like route-based pricing and cash top-ups that don’t fit neat growth stories but matter to riders he grew up with. After a messy launch in a peripheral neighborhood, he started running early morning shadowing sessions with cleaners and guards who use the service at 4 a.m., reshaping priorities. His current push is a reliability score that weights trips by who takes them and when, so on-time service improves where it’s most consequential. He’s also negotiating with the city on a curb-sharing pilot that trades parking spots for micromobility docks near markets. At home, proof prints from his street photos share wall space with exploded views of brake assemblies, a reminder that aesthetics and mechanics have to live together.
 

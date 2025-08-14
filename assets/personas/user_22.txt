@@ -1,0 +1,29 @@
+Name: Daniela Ortega
+Age: 31
+Location: Santiago, Chile
+Profession: Research Data Librarian, University, builds repositories and training that make datasets findable, citable, and reusable across disciplines.
+
+Backstory: Daniela interned at a newspaper archive and fell in love with the feeling of pulling the exact clipping someone needed. A stint in a molecular biology lab convinced her that experiments fail as much from lost spreadsheets as from bad pipetting. Library science gave her both ethics and tools. She now treats datasets like books with backbones that deserve proper cataloging.
+
+Core Motivation: To prevent knowledge from evaporating into private folders by building cultural and technical habits of sharing.
+
+Fears & Insecurities: She fears being seen as bureaucratic overhead. She worries about pushing mandates without support. She’s insecure about scripting and is learning Python slowly.
+
+Hobbies & Passions:
+
+- Zine Making: Publishes small guides on metadata and DOIs; the format keeps her voice friendly.
+- Trail Running in Cajón del Maipo: Uses long runs to solve taxonomy puzzles in her head.
+- Analog Photography: Enjoys archival processes that mirror her professional values.
+
+Media Diet:
+
+- Reads Journal of eScience Librarianship and RDA (Research Data Alliance) outputs.
+- Listens to "The Turing Way" community calls and Spanish-language open science podcasts.
+- Watches Carpentries workshops and OSF tutorials.
+
+Communication Style: Patient and practical. She avoids jargon and brings snacks to workshops because kindness increases compliance.
+
+Quirk or Contradiction: Color-codes sticky notes by metadata field and insists that colors mean the same across projects.
+
+Bio & Current Focus: Daniela is building a campus-wide data deposit policy that trades carrots for sticks—grants of storage quotas, DOIs, and citation tracking in exchange for tidy metadata. After a lab lost a postdoc’s code to a laptop theft, she launched a “two places rule” campaign that became a meme. She’s piloting a lightweight data journal for undergrads so first datasets earn a sense of ceremony. A current project maps sensitive data workflows so compliance doesn’t scare people into silence. Her desk holds a stack of zines and a label maker; she’s happiest when a student leaves knowing exactly what to call their columns.
+

@@ -1,0 +1,29 @@
+Name: Basel Al-Hamid
+Age: 34
+Location: Berlin, Germany (born in Homs, Syria)
+Profession: Mobile Device Repair Shop Owner and Community Tech Trainer, refurbishes smartphones and runs low-cost workshops on digital security for refugees.
+
+Backstory: Basel studied mechanical engineering before war turned his life into a series of border crossings and waiting rooms. In Berlin he noticed how much of refugee life runs on fragile phones—documents, maps, family. He apprenticed in a repair shop and discovered a talent for patient troubleshooting and gentle customer education. He opened a tiny storefront that doubles as a classroom.
+
+Core Motivation: To give people control over the devices that now carry their identity, safety, and connection.
+
+Fears & Insecurities: He fears a data loss that breaks a family link. He worries about being seen only as cheap labor rather than a craftsman. He’s insecure about German paperwork and keeps folders meticulously.
+
+Hobbies & Passions:
+
+- Calligraphy in Arabic and German: Practices scripts side by side; bridging is an art.
+- Cycling the Landwehr Canal: Movement shakes loose business ideas.
+- Cooking for Neighbors: Shared meals turn clients into friends.
+
+Media Diet:
+
+- Reads repair guides (iFixit), data protection resources, and immigration updates.
+- Listens to Arabic news and German public radio to keep both worlds in earshot.
+- Watches right-to-repair hearings and micro-soldering tutorials.
+
+Communication Style: Patient and respectful. He explains options and risks before opening a device and offers data backups by default.
+
+Quirk or Contradiction: Refuses to upsell cases he wouldn’t use; instead, he teaches drop habits and installs free password managers.
+
+Bio & Current Focus: Basel’s bench holds tiny screws in labeled tins and a stack of donated phones waiting for new owners. He trains newcomers to spot counterfeit batteries and to ask consent before touching data. After a client lost a digital residence permit to a cracked screen, he started a free “backup Saturdays” program that pairs repairs with security tips in Arabic, Farsi, and German. He’s negotiating with a nonprofit to formalize internships that pay, not just “train.” A new idea: simple on-device AI that flags scam messages offline; he’s testing it carefully with community feedback. At night he writes to his family and balances the drawer, grateful that small fixes can feel like justice.
+

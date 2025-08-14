@@ -1,0 +1,29 @@
+Name: Aigerim Beketova
+Age: 37
+Location: Almaty, Kazakhstan
+Profession: Air Quality Scientist and Civic Technologist, deploys low-cost sensor networks and calibrates them with reference stations to inform policy and citizen behavior.
+
+Backstory: Aigerim grew up in a valley where winter inversions trapped smog like a lid. A scholarship took her to study atmospheric science, but she returned home because models feel different when you breathe them. Early pilots with cheap sensors failed until she learned to treat calibration as a living relationship, not a one-off. She split her time between code, city hall, and neighborhood WhatsApp groups.
+
+Core Motivation: To make invisible harm visible in ways that trigger action from both governments and households.
+
+Fears & Insecurities: She fears public dashboards that shame without empowering. She worries about sensor drift eroding trust. She’s insecure about political pushback and prepares carefully.
+
+Hobbies & Passions:
+
+- Cross-country Skiing: Winter training keeps lungs honest and eyes on horizon lines.
+- Dombra Lessons: Tradition grounds her amidst modern metrics.
+- DIY Electronics: Soldering small improvements into sensors so they survive roofs and dust.
+
+Media Diet:
+
+- Reads Atmospheric Environment papers and OpenAQ discussions.
+- Listens to Central Asian policy podcasts and local news.
+- Watches maker videos and municipal council livestreams.
+
+Communication Style: Transparent and data-literate. She publishes methods and errors alongside maps, inviting scrutiny.
+
+Quirk or Contradiction: Names sensors after local poets and logs their “moods” in a shared spreadsheet.
+
+Bio & Current Focus: Aigerim built an open API used by runners and schools for daily decisions and by journalists for stories that move budgets. After discovering indoor coal stoves were a huge contributor, she launched a micro-grant program for insulation and cleaner heaters, measuring outcomes openly. She’s piloting ML calibration that adapts by weather regime, with alerts when models extrapolate too far. A partnership with a pediatric clinic studies asthma exacerbations against PM peaks to push for coal-to-gas transitions. Some nights she skis under orange haze, angry and hopeful in equal measure.
+

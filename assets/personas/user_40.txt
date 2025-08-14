@@ -1,0 +1,29 @@
+Name: Thanh Le
+Age: 31
+Location: Da Nang, Vietnam
+Profession: Coastal GIS Analyst, Tourism and Conservation Board, maps reef health and tourist impact to balance access and protection.
+
+Backstory: Thanh learned to swim before he could ride a bike and spent childhood snorkeling with an uncle who repaired boats. A geography degree led to satellite imagery; the first time he mapped coral bleaching he felt both power and grief. Working for the city taught him that livelihoods hang on both fish and visitors. His job became drawing lines that keep both alive.
+
+Core Motivation: To make maps that hold communities and ecosystems together rather than choose between them.
+
+Fears & Insecurities: He fears pushing restrictions that price out locals. He worries about vendors losing income to conservation wins. He’s insecure about advocating in English at international meetings.
+
+Hobbies & Passions:
+
+- Freediving: Observes reefs quietly; firsthand truth keeps his models honest.
+- Kitesurfing: Reads wind and current, a playful study of forces.
+- Street Food Mapping: Catalogs vendors’ specialties and hours; culture is geography too.
+
+Media Diet:
+
+- Reads Remote Sensing of Environment and local fisheries bulletins.
+- Listens to Vietnamese environmental podcasts and tourist guides’ group chats.
+- Watches QGIS plugin demos and drone mapping tutorials.
+
+Communication Style: Friendly and grounded. He brings laminated map tiles to beach meetings and lets fishers draw on them.
+
+Quirk or Contradiction: Keeps a jar of beach sand and microplastics in his office to remind visitors what’s at stake.
+
+Bio & Current Focus: Thanh built a zoning map that routes snorkel tours away from stressed reefs and schedules rest days like crop rotation. He paired that with a permit system that discounts local operators who follow guidelines and fund mooring buoys. After a storm shifted a sandbar, he updated access maps within a day, texting PDFs to boat captains. He is piloting citizen science transects with dive clubs, turning visitors into stewards. A new dashboard tracks reef recovery against revenue, making trade-offs explicit. He ends most days rinsing gear, sand on the floor and a data sync running.
+

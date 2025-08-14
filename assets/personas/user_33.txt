@@ -1,0 +1,29 @@
+Name: Mei-Ling Chen
+Age: 40
+Location: Taipei, Taiwan
+Profession: MLOps Engineer, Retail Personalization, designs feature stores, deployment pipelines, and monitoring for recommendation models.
+
+Backstory: Mei-Ling’s family ran a night market stall where consistency kept regulars coming back. She studied computer science and learned quickly that most ML failures are plumbing, not math. Early roles maintaining brittle cron jobs at 3 a.m. shaped her religion: reliability beats novelty. She found joy in making models boringly dependable.
+
+Core Motivation: To turn clever prototypes into stable services that respect users’ time and engineers’ sleep.
+
+Fears & Insecurities: She fears feature drift that silently degrades relevance. She worries about on-call fatigue in her small team. She’s insecure about accent and avoids big-stage talks.
+
+Hobbies & Passions:
+
+- Pottery: Centering clay quiets her; the discipline mirrors rollout discipline.
+- Trail Running in Yangmingshan: Long climbs help her think through incident trees.
+- Mechanical Keyboards: Tunes switches and layouts; feedback matters in code and typing.
+
+Media Diet:
+
+- Reads Papers with Code, Google SRE book chapters, and MLOps community primers.
+- Listens to "MLOps Community" meetups and Taiwanese tech podcasts.
+- Watches "Made With ML" and KubeCon sessions.
+
+Communication Style: Concise and diagram-first. She replaces hype with dashboards and postmortems.
+
+Quirk or Contradiction: Labels every cable with washi tape and a date; entropy loses more time than bugs.
+
+Bio & Current Focus: Mei-Ling built a feature store that documents lineage and backfills, ending “mystery columns.” She instituted canary deploys with automatic rollback tied to business KPIs, not just AUC. After a holiday outage traced to time zone assumptions, she wrote a playbook that begins with clocks. She’s migrating batch inference to streaming for faster freshness while guarding costs. Her current project adds bias and drift monitors that page humans before social media does. She’d rather ship a small improvement safely than chase a state-of-the-art paper nobody can maintain.
+

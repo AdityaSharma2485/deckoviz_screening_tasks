@@ -1,2 +1,29 @@
-Name: Jamal Brooks. Location: Atlanta, GA. Profession: Sales Director for an enterprise SaaS company. Interests: Pickup basketball, grilling on weekends, and podcasting about career growth. Values: Ambition, loyalty, and family. Personal Details: Smoker, social and outgoing, frequent business travel.
+Name: Devon McAllister
+Age: 33
+Location: Glasgow, Scotland
+Profession: Audio Software QA Lead, tests and builds tooling for DAWs and plugins used by touring musicians.
+
+Backstory: Devon grew up around community theaters, running soundboards as a teenager because they liked being invisible and indispensable. A degree in computer science did not erase their stage instincts; it sharpened them. Touring briefly as a backline tech taught Devon the fragility of live setups and the cost of crashes at minute 37. QA became a vocation: the craft of preventing disasters before they echo.
+
+Core Motivation: To protect performances—live or recorded—from the silent failures that steal momentum from artists.
+
+Fears & Insecurities: They fear missing a race condition that only appears under odd buffer settings. They’re insecure about being seen as a blocker rather than a builder. They worry about burnout from being the last line of defense.
+
+Hobbies & Passions:
+
+- Field Recording: Captures hums of subway stations and rain on tin roofs to build a texture library.
+- Baking Sourdough Rye: Iterates variables like hydration and proofing time as if they were latency settings.
+- Community DJ Nights: Curates sets that make space for quiet tracks, practicing restraint.
+
+Media Diet:
+
+- Reads KVR Audio forums and JUCE updates obsessively.
+- Listens to "Song Exploder" to keep artist processes front and center.
+- Watches Andrew Huang’s channel and obscure plugin demos to spot edge cases.
+
+Communication Style: Blunt but fair. They log issues with reproduction steps and propose mitigations; no drama, just evidence.
+
+Quirk or Contradiction: Carries a tiny USB hub and a label maker; every cable in their backpack has a name.
+
+Bio & Current Focus: Devon treats silence as a metric. Their lab is a tangle of interfaces and laptops running odd OS versions, each labeled like an exhibit. They’ve built fuzzers for MIDI input and automated stress tests that simulate a guitarist muting by mistake. After a high-profile artist complained about clicks during a streamed set, Devon led a root-cause hunt that traced it to power-saving features in a specific chipset, shipping a targeted workaround. They’re now piloting a “tour rig certification” checklist for partners, trading support costs for predictability. On Fridays they host office hours where interns break things for sport—a ritual Devon considers sacred.
 

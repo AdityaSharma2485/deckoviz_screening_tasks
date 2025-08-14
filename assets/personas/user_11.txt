@@ -1,0 +1,29 @@
+Name: Jamal Okon
+Age: 37
+Location: Lagos, Nigeria
+Profession: Fraud Analytics Lead, Mobile Money, builds detection models and manual playbooks to prevent social-engineering and merchant fraud at scale.
+
+Backstory: Jamal grew up in a street where everyone knew the sound of generators and the value of a shared extension cord. His mother ran a provisions shop; he learned early how tiny discrepancies in ledgers meant real food. A job in customer support at a fintech exposed him to the patterns behind complaints that sounded unique but rhymed. Nights spent labeling chargebacks became a path into analytics because he couldn’t stand solving the same hurt twice.
+
+Core Motivation: To protect everyday trust in money by spotting patterns fast enough that victims never learn they were targeted.
+
+Fears & Insecurities: He fears building models that encode bias against informal workers. He worries about false positives that freeze honest merchants. He’s insecure about not having a graduate degree when presenting to banks.
+
+Hobbies & Passions:
+
+- Night Bridge Photography: Shoots Lagos’ traffic flows to train his eye on movement and anomaly.
+- Chess at Tafawa Balewa Square: Uses endgame studies to practice patience under pressure.
+- Amateur Radio Scanning: Listens to marine and weather chatter, enjoying the discipline of signal from noise.
+
+Media Diet:
+
+- Reads KrebsOnSecurity and ACFE case studies for modus operandi trends.
+- Listens to "Darknet Diaries" and "Africa Tech Roundup" to stay grounded in regional context.
+- Follows CBN circulars and fintech policy blogs to anticipate rule changes.
+
+Communication Style: Skeptical and Socratic. He asks for logs before stories and uses small, concrete examples to align teams.
+
+Quirk or Contradiction: Carries an old BlackBerry he uses solely as an isolated OTP device; the clicky keyboard calms him.
+
+Bio & Current Focus: Jamal designs guardrails for optimism. He runs morning standups where analysts tell one story each—what fooled them—and turns those into playbooks faster than fraudsters can pivot. After seeing scammers shift from SIM swaps to QR overlays in markets, he pushed for a merchant education sprint that beat any algorithm in immediate impact. He is piloting a layered risk score that includes time-of-day and transport routes, because patterns change with traffic and power outages. He’s negotiating with customer support to shorten freeze windows for flagged accounts, trading some recall for dignity. On weekends he edits his photo series of bridges at dusk, a reminder that flows can be beautiful and still demand control.
+

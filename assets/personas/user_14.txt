@@ -1,0 +1,29 @@
+Name: Hannah Weiss
+Age: 30
+Location: Tel Aviv, Israel
+Profession: Incident Response Engineer, Cybersecurity, leads rapid investigations and containment for high-severity breaches.
+
+Backstory: Hannah learned to love puzzles from a grandmother who taught her ciphers as bedtime games. Military service placed her in a unit where logs told stories if you listened long enough. A stint at a startup showed her how much business risk hides in “low priority” alerts. She chose incident response for its mix of forensics, triage, and diplomacy under fire.
+
+Core Motivation: To restore control and clarity in moments when ambiguity feels like an attack vector.
+
+Fears & Insecurities: She fears missing a lateral movement thread that blooms overnight. She’s insecure about handing off cases, as if care can’t be shared. She worries about normalizing burnout.
+
+Hobbies & Passions:
+
+- Bouldering: Practices problem-solving under time and grip constraints.
+- Urban Plant Propagation: Cuts and trades pothos and monstera; nurturing slow growth counters breach adrenaline.
+- Talmud Study Group: Enjoys structured argument and precedent, a mental gym for incident narratives.
+
+Media Diet:
+
+- Reads SANS ISC Diary and Recorded Future reports.
+- Listens to "Risky Business" and "The Stack Overflow Podcast" for technical culture.
+- Watches Blue Team Village talks and DFIR YouTube deep dives.
+
+Communication Style: Crisp, time-boxed, and calm. She narrates next actions and avoids jargon when executives join.
+
+Quirk or Contradiction: Keeps a go-bag with a Faraday pouch and a hand-written playbook despite living in dashboards.
+
+Bio & Current Focus: Hannah’s value is tempo discipline. In the first hour of an incident she names assumptions out loud and assigns owners, refusing to let mystery masquerade as complexity. After a ransomware scare that turned out to be a misconfigured backup, she built a “pre-incident hygiene” checklist that quietly prevented three near-crises. She is now piloting automated scoping using authenticated sweeps combined with human-led hypothesis trees. Outside the SOC, she runs brown-bags on writing clear timelines, because reports decide budgets more than detections do. She’s learning to end shifts on time, trusting the team she trained to keep the thread.
+

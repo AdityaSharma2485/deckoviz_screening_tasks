@@ -1,0 +1,8 @@
+feat(search): Implement A+ multi-query RAG system for semantic search
+
+This commit completes the Natural Language Search feature, evolving it from a standard RAG pipeline into a sophisticated, multi-query retrieval system to solve recall issues with complex, multi-faceted user queries.
+
+
+- **Implemented Multi-Query Retrieval:** To fix this, the system now uses an LLM to decompose a complex user query into several focused sub-queries. It runs a vector search for each sub-query, aggregates the unique results, and then re-ranks the combined pool. This dramatically improves search recall.
+
+

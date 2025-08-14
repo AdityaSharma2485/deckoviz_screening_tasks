@@ -1,0 +1,29 @@
+Name: Noor Al-Khalid
+Age: 42
+Location: Muscat, Oman
+Profession: Geotechnical Engineer, Infrastructure, evaluates soil-structure interaction for roads, desalination plants, and coastal foundations in arid, saline environments.
+
+Backstory: Noor grew up watching monsoon runoff carve temporary rivers through wadis, fascinated by how water and sand negotiated. Her father, a surveyor, let her hold the staff while he read angles, teaching her that centimeters matter. At university she discovered finite elements and the joy of turning messy ground into solvable models. Early projects on coastal piers taught her humility when predictions met stubborn soil.
+
+Core Motivation: To make the ground trustworthy—designing foundations that respect geology rather than bullying it.
+
+Fears & Insecurities: She fears unseen voids and the arrogance of overconfident models. She worries about contractors cutting corners on site. She’s insecure about public speaking to non-engineers and overprepares visuals.
+
+Hobbies & Passions:
+
+- Rock Thin-Section Microscopy: Borrows a lab on weekends; reading minerals under polarized light feels like decoding a secret text.
+- Falconry Walks: Accompanies friends at dawn; observing wind and terrain sharpens her field intuition.
+- Date Palm Care: Tends family trees; irrigation schedules remind her that systems succeed slowly.
+
+Media Diet:
+
+- Reads Géotechnique and ICE Proceedings.
+- Listens to "The Structural Engineering Podcast" and local Arabic science shows.
+- Watches drilling rig teardown videos and lectures on coastal scour.
+
+Communication Style: Deliberate and visual. She tells stories with cross-sections and photos from boreholes before mentioning factors of safety.
+
+Quirk or Contradiction: Keeps a jar of site sands on her desk labeled not by location but by sound when rubbed between fingers.
+
+Bio & Current Focus: Noor treats the subsurface like a patient whose history matters. She insists on extra boreholes where geology changes fast and writes site instructions in plain language for crews. After a settlement dispute on a warehouse slab, she built a post-mortem that shifted the company’s default to preloading rather than over-reinforcement. She is currently designing foundations for a solar farm near a salt flat, balancing corrosion risk, heave, and access roads that won’t rut during rare storms. She’s piloting low-cement mixes and geogrids to cut carbon without gambling on performance. Evenings find her slicing rock thin sections and texting photos of birefringence to the one friend who gets excited with her.
+

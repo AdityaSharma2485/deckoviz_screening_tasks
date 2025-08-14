@@ -1,0 +1,29 @@
+Name: Zainab Hussain
+Age: 34
+Location: Lahore, Pakistan
+Profession: AI Ethics Program Lead, Healthtech, builds review processes, red-teaming, and community consultations for AI-driven diagnostics.
+
+Backstory: Zainab studied philosophy and later bioethics, volunteering in clinics where consent was a hurried signature. A fellowship on algorithmic fairness gave her tools to interrogate model claims. She joined a startup to make ethics operational, not ornamental, after watching a prototype misclassify a common skin condition on darker tones. She treats ethics as design constraints, not PR.
+
+Core Motivation: To ensure that systems meant to help do not deepen harm, and that those most affected get a say before deployment.
+
+Fears & Insecurities: She fears tokenizing community input. She worries about being sidelined when deadlines loom. She’s insecure about code reviews and pairs with engineers for depth.
+
+Hobbies & Passions:
+
+- Community Health Workshops: Co-designs consent forms with patients; language matters.
+- Classical Urdu Poetry: Finds moral nuance in ghazals; ambiguity is not an enemy.
+- Sewing: Pattern-making trains her to turn principles into seams that hold.
+
+Media Diet:
+
+- Reads FAccT papers, WHO AI ethics guidance, and local health policy.
+- Listens to "Tech Policy Press" and regional health podcasts.
+- Watches red-teaming talks and participatory design case studies.
+
+Communication Style: Firm and empathetic. She asks “who loses?” in every meeting and brings stories, not just stats.
+
+Quirk or Contradiction: Brings a tape measure to whiteboard sessions to literally measure the space given to risks vs. benefits.
+
+Bio & Current Focus: Zainab established an internal ethics review that can stop launches, not just comment. She built a demographically diverse evaluation set through partnerships with public hospitals, paying participants fairly. After finding labeler bias in skin tone annotations, she redesigned the pipeline with blinded consensus and specialist adjudication. She’s piloting community preview clinics where patients can try tools and veto features. A current effort writes model cards that include failure stories and rollback triggers. She sews on weekends; seams must be strong where stress will come.
+

@@ -1,2 +1,29 @@
-Name: Chen Wu. Location: Boston, MA. Profession: Biomedical Data Scientist at a hospital research lab. Interests: Long-distance running, photography of coastal landscapes, and classical piano. Values: Scientific rigor, patient advocacy. Personal Details: Non-smoker, trains for half-marathons, mentors STEM students.
+Name: Linh Trần
+Age: 27
+Location: Ho Chi Minh City, Vietnam
+Profession: Clinical Research Coordinator, Oncology, orchestrates protocols, patient schedules, and data integrity across multi-site trials.
+
+Backstory: As a teenager, Linh often translated for her grandmother at oncology appointments, learning the unspoken choreography of hospitals. In university she studied bioinformatics but gravitated to the human interface where forms meet fatigue. An internship logging adverse events taught her that a missed checkbox can ripple into real harm. She chose coordination because she likes seeing the whole machine and keeping it honest.
+
+Core Motivation: To remove administrative friction so patients and clinicians can focus on care, not paperwork.
+
+Fears & Insecurities: She fears missing a protocol step that compromises data or delays treatment. She’s insecure about challenging senior physicians when timelines slip. She worries about compassion fatigue.
+
+Hobbies & Passions:
+
+- Kintsugi-Style Pottery Repair: Finds beauty in repaired cracks; it reframes mistakes as visible commitment.
+- Night Runs by the Saigon River: Uses the steady pace to process complex timelines in her head.
+- Recreating Anime Recipes: Weekend experiments in precision and play—measuring mirin is oddly soothing.
+
+Media Diet:
+
+- Reads The Lancet newsletters and local Ministry of Health circulars to anticipate changes.
+- Listens to "Maintenance Phase" to interrogate health myths and patient communication.
+- Watches "Binging with Babish" and Japanese hospital dramas to decompress with structure and story.
+
+Communication Style: Gentle but thorough. She over-prepares and uses quiet persistence to get signatures and samples on time.
+
+Quirk or Contradiction: Uses color-coded sticky notes that map exactly to trial phases; she can glance at a desk and know the state of a study.
+
+Bio & Current Focus: Linh is the person everyone texts when a freezer alarm goes off or a courier is late. She keeps parallel timelines in her head and on a wall, knowing redundancy is a kindness, not a crutch. After a near miss with mislabeled vials, she instituted a double-audit ritual that caught three errors in a month. She’s now piloting a consent process for low-literacy participants, co-designed with a patient advisory group, that swaps jargon for illustrated steps without losing legal rigor. Her current study—a Phase II trial—requires coordinating across three hospitals and a fickle rainy season; she’s built contingency kits in dry boxes. At home, gold seams in a repaired bowl remind her that visible care can be its own data point.
 

@@ -1,0 +1,29 @@
+Name: Farah Qureshi
+Age: 31
+Location: Karachi, Pakistan
+Profession: Pharmacovigilance Specialist, Generics Manufacturer, monitors adverse event reports and coordinates safety labeling changes across markets.
+
+Backstory: Farah watched her diabetic father navigate medications with a pharmacist’s guidance more than a doctor’s. In pharmacy school she preferred case narratives over compounding, drawn to the detective work of side effects. A residency exposed her to how culture and literacy shape reporting. Industry offered scale; she took it reluctantly and learned to build conscience into process.
+
+Core Motivation: To make medicines safer in practice, not just in trials, by listening to what patients and pharmacists actually report.
+
+Fears & Insecurities: She fears missing a signal buried in noise. She worries about legal risk overshadowing patient risk. She’s insecure about presenting to regulators and practices dry runs at home.
+
+Hobbies & Passions:
+
+- Calligraphy with Recycled Paper: Finds clarity in deliberate strokes; it balances her alert inbox.
+- Birding at Dawn in Korangi Creek: Watching egrets teaches patience for rare events.
+- Urdu Short Stories: Hosts a reading group; narratives sharpen her attention to human detail.
+
+Media Diet:
+
+- Reads WHO signal detection guidelines and local Drug Regulatory Authority notices.
+- Listens to "The BMJ Podcast" and pharmacology lectures.
+- Watches statistical tutorials on disproportionality analysis and R Shiny demos.
+
+Communication Style: Methodical and empathetic. She pairs charts with short case vignettes to keep stakes present.
+
+Quirk or Contradiction: Keeps a bowl of assorted placebo tablets on her desk to demonstrate pill size and shape in meetings.
+
+Bio & Current Focus: Farah’s week is a loop of triaging ICSRs, running signal detection, and drafting label changes that lawyers won’t sand smooth. After a cluster of dizziness reports tied to a packaging change, she pushed for a redesign that improved grip for older hands. She’s building pharmacy partnerships to capture near-misses that never reach formal systems. A current project translates key adverse effects into pictograms for low-literacy inserts without dumbing down nuance. She still calls the neighborhood pharmacist who helped her father, testing whether her policies would have helped in that tiny shop.
+

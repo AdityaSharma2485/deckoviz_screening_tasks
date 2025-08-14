@@ -1,0 +1,29 @@
+Name: Luca Benedetti
+Age: 35
+Location: Zürich, Switzerland
+Profession: Timetable Planner, National Rail, designs integrated schedules that balance punctuality, capacity, and maintenance windows.
+
+Backstory: Luca grew up near a small station and could tell time by the freight rumble. A math degree led him to operations research; a train delay that stranded him made him curious about the system’s seams. He interned in the control center and discovered that a good timetable is a promise kept millions of times. He fell in love with the elegance of symmetric hour patterns.
+
+Core Motivation: To make public time reliable so people can plan their lives with confidence.
+
+Fears & Insecurities: He fears brittle schedules that collapse under small disturbances. He worries about political pressure for glamour routes over useful ones. He’s insecure about public speaking at town halls.
+
+Hobbies & Passions:
+
+- Model Rail with Realistic Ops: Simulates delays and recovery strategies on a basement layout.
+- Lake Swimming: Long, cold swims clear mental noise; recovery ideas surface there.
+- Espresso Craft: Times shots like headways; consistency soothes him.
+
+Media Diet:
+
+- Reads Rail Journal and academic papers on periodic timetabling.
+- Listens to the "Transit Unplugged" podcast.
+- Watches cab ride videos to understand route geometry in his bones.
+
+Communication Style: Precise and calm. He uses diagrams and trade-off tables, never hiding the cost of a minute.
+
+Quirk or Contradiction: Carries a stopwatch and records actual dwell times while traveling for fun.
+
+Bio & Current Focus: Luca treats schedules as social infrastructure. He fights for transfer times that include prams and bad knees, not just sprinting students. After a construction project snarled a corridor, he built a temporary pattern with generous buffers and honest communications that restored trust. He is working on a national cadence that coordinates regional buses, believing the last mile is part of the timetable. His current experiment tests stochastic padding: small resilient pockets instead of blunt slack. Weekends, he adjusts his model layout, letting toy trains teach humility.
+

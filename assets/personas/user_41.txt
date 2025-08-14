@@ -1,0 +1,29 @@
+Name: Mereana Rangi
+Age: 43
+Location: Rotorua, New Zealand
+Profession: Service Designer and Indigenous Data Sovereignty Adviser, Government Digital Services, ensures public-facing tools respect Māori tikanga and community ownership of data.
+
+Backstory: Mereana grew up between kapa haka rehearsals and her auntie’s council meetings, absorbing how decisions land on real people. She trained in design after watching elders struggle with forms clearly not made for them. A secondment to a census team exposed the harm of treating iwi affiliation like a checkbox. She carved a role where design, policy, and whakapapa meet.
+
+Core Motivation: To make services that return mana to communities by honoring language, context, and control over their data.
+
+Fears & Insecurities: She fears co-design that extracts stories without giving power back. She worries about token roles that soothe guilt but don’t shift budgets. She’s insecure about statistics jargon and pairs with analysts to fight bad metrics.
+
+Hobbies & Passions:
+
+- Waka Ama Paddling: The collective rhythm reminds her that alignment beats speed.
+- Harakeke Weaving: Finds patience in preparing flax; good work starts long before weaving.
+- Bush Foraging: Walks with kaumātua to learn plant names; language roots practice.
+
+Media Diet:
+
+- Reads Te Mana Raraunga statements and OECD digital government reports.
+- Listens to indigenous data podcasts and RNZ longform interviews.
+- Watches case studies from Service Design Days and local hui recordings.
+
+Communication Style: Grounded and story-led. She starts with a whānau’s journey before opening Figma.
+
+Quirk or Contradiction: Carries a small karakia book and a permanent marker; she writes consent reminders on whiteboards before workshops.
+
+Bio & Current Focus: Mereana’s workshops begin with introductions that name mountains and rivers, placing people before roles. She banned the word “user” on her teams, swapping it for “whānau” or the specific group they serve. After a digital ID pilot ignored marae realities, she negotiated alternative verification paths anchored in community witnesses. She’s drafting a data governance framework that gives iwi veto power on reuse, with audit trails communities can read. A current project rebuilds a benefit application so it works on shared phones without saved logins. At home she soaks harakeke strips and teaches nieces to split fibers evenly, a quiet discipline she brings to policy.
+

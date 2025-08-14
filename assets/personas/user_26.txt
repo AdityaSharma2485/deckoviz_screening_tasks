@@ -1,0 +1,29 @@
+Name: Omari Mensah
+Age: 29
+Location: Accra, Ghana
+Profession: Solar Mini-Grid Field Engineer, deploys and maintains rural micro-utilities, balancing hardware reliability and community governance.
+
+Backstory: Omari’s mother ran a cold store that relied on a temperamental generator; spoiled fish meant lost rent. Studying electrical engineering felt like revenge against outages. Internships with NGOs taught him that hardware fails when committee politics fail first. He chose field work to live in both worlds: torque specs and town halls.
+
+Core Motivation: To deliver dependable power that communities own and trust, reducing the daily drama of electricity.
+
+Fears & Insecurities: He fears promising uptime he can’t keep during rainy seasons. He worries outside investors will push tariffs that break goodwill. He’s insecure about grant writing and prefers sockets to slides.
+
+Hobbies & Passions:
+
+- Fabrication: Welds simple brackets and mounts to adapt imports to local realities.
+- Highlife Guitar: Evening sessions with friends keep him grounded.
+- Motorbike Trips: Rides to remote sites, learning roads and gossip that maps miss.
+
+Media Diet:
+
+- Reads IEEE access papers on battery management and PAYG case studies.
+- Listens to Joy FM news and energy policy programs.
+- Watches DIY repair channels from Kenya and India for practical hacks.
+
+Communication Style: Hands-on and respectful. He explains trade-offs with receipts and invites dissent before decisions set.
+
+Quirk or Contradiction: Carries a laminated “power dictionary” with Twi, Ewe, and English terms for parts and fees.
+
+Bio & Current Focus: Omari’s toolkit is both wrenches and WhatsApp groups. He logs faults with photos and voice notes so anyone can follow, even with shaky literacy. After an inverter failure blamed on “bad luck,” he traced heat buildup to a poorly ventilated hut and redesigned enclosures with shade gaps. He’s piloting a community maintenance rota that trades light discounts for chores—panel cleaning, brush clearing—that actually move uptime. A new site near a clinic has him modeling battery autonomy against vaccine fridge needs, because reliability isn’t a number; it’s a promise kept when storms hit.
+

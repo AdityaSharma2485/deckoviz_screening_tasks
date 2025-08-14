@@ -1,0 +1,29 @@
+Name: Chen Wei
+Age: 45
+Location: Shanghai, China
+Profession: Supply Chain Risk Analyst, Multinational Electronics, models disruption scenarios and designs contingency playbooks.
+
+Backstory: Chen Wei’s parents worked in a factory that shifted product lines with policy winds; uncertainty was dinner conversation. He studied operations research and learned to draw maps of dependencies that most people only feel when they snap. SARS and later COVID cemented his conviction that risk is a continuous job, not a crisis switch. He built a career translating graphs into contracts.
+
+Core Motivation: To reduce fragility in systems ordinary people rely on, making shocks survivable without drama.
+
+Fears & Insecurities: He fears blind spots outside audited tiers. He worries that executives will ignore low-probability, high-impact scenarios. He’s insecure about his English writing and over-edits memos.
+
+Hobbies & Passions:
+
+- Bonsai and Wiring: Shapes growth patiently; restraint is strategy.
+- Historical Map Collecting: Studies old trade routes for pattern humility.
+- Tai Chi at Dawn: Practices balance literally and metaphorically.
+
+Media Diet:
+
+- Reads HBR supply chain pieces, academic risk journals, and customs updates.
+- Listens to Caixin podcasts and global trade briefings.
+- Watches manufacturing tours to understand real processes, not slides.
+
+Communication Style: Calm and structural. He frames options with clear costs and prepares Plan C quietly.
+
+Quirk or Contradiction: Keeps a red thread in his drawer and runs it over printed maps to trace alternate paths.
+
+Bio & Current Focus: Chen Wei built a supplier graph that includes logistics nodes and political risk indicators, not just vendor names. After floods shut a sub-tier anodizer, his team rerouted through Vietnam using pre-negotiated capacity because he’d insisted on dormant contracts. He is formalizing a “black swan drill” where teams pick a random shock and rehearse responses, normalizing agility. He’s pushing for onshore buffer stock for critical components despite quarterly cost pain, believing resiliency is a value, not a metric. In the evenings he wires a juniper, considering which cut now prevents regret later.
+

@@ -1,0 +1,29 @@
+Name: Marco Silva
+Age: 39
+Location: São Paulo, Brazil
+Profession: Robotics Operations Manager, Grocery Fulfillment, coordinates humans and autonomous systems in high-throughput warehouses.
+
+Backstory: Marco started as a forklift operator and learned process flow by muscle memory. A supervisor noticed his knack for diagnosing jams and sent him to a Kaizen workshop that felt like discovering a second language. He studied industrial engineering at night, translating theory into aisle widths and battery swap timing. When robots arrived, he became the human who could speak to machines and people without condescension.
+
+Core Motivation: To make complex systems humane—efficient enough to be sustainable, and predictable enough that people sleep well before shifts.
+
+Fears & Insecurities: He fears automation decisions that erase dignity from work. He’s insecure about coding beyond scripts and leans on his team. He worries about accidents on his watch more than missed KPIs.
+
+Hobbies & Passions:
+
+- Brazilian Jiu-Jitsu: Practices leverage and calm under constraint, useful in crisis calls.
+- Drone Racing: Tests line-of-sight judgment in parking lots, sharpening spatial intuition.
+- Lego Technic Nights: Builds with nephews to think through mechanisms without stakes.
+
+Media Diet:
+
+- Reads The Robot Report and supply chain journals.
+- Listens to "The Warehouse" podcast and Brazilian labor law briefings.
+- Watches Data Is Beautiful and FlowingData for ideas on visualizing throughput.
+
+Communication Style: Straightforward and physical. He walks the floor while talking, pointing at bottlenecks instead of slides.
+
+Quirk or Contradiction: Keeps a calibrated torque wrench in his backpack and checks random bolts before meetings for luck.
+
+Bio & Current Focus: Marco treats fulfillment like choreography. His days toggle between tuning robot speeds to reduce near-misses and negotiating break schedules that align with peak picks. After a pileup near a cold storage door, he introduced a “yellow zone” protocol that slowed machines when CO2 levels spiked from open freezers. He’s rolling out a mentoring ladder for operators to become maintenance techs, creating pathways rather than replacements. A new site launch has him mapping aisles with string before software, an old habit he trusts. He spends evenings annotating CCTV clips to teach the system what “almost bad” looks like, believing prevention lives in the almosts.
+

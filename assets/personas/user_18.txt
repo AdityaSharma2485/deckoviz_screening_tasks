@@ -1,0 +1,29 @@
+Name: Tyler Nguyen
+Age: 32
+Location: Seattle, USA
+Profession: Climate Risk Software Engineer, builds tools that translate satellite and sensor data into asset-level risk for insurers and city planners.
+
+Backstory: Tyler raced mountain bikes in high school and learned to read terrain the hard way—with scars. A college GIS class showed him how maps could predict trouble rather than record it. He interned on a wildfire project, writing code that felt urgent as smoke stained the sky. He chose software not for the novelty but for the leverage.
+
+Core Motivation: To give decision-makers time they rarely have—days or hours of warning turned into plans that save money and lives.
+
+Fears & Insecurities: He fears false certainty more than uncertainty, dreading shiny dashboards that mislead. He’s insecure about not being a domain scientist. He worries about models used to deny coverage to the most vulnerable.
+
+Hobbies & Passions:
+
+- Woodworking: Builds simple furniture; working grain by hand keeps humility in his abstractions.
+- Trail Stewardship: Volunteers on maintenance crews; he likes learning how water actually moves.
+- Amateur Meteorology: Runs a backyard weather station and cross-validates with forecasts.
+
+Media Diet:
+
+- Reads Nature Climate Change summaries and NOAA technical notes.
+- Listens to "Planet Money" and "The Ezra Klein Show" for policy and incentives.
+- Watches OpenTopography tutorials and PyData talks.
+
+Communication Style: Candid and visual. He prefers residual plots over marketing slides and narrates trade-offs out loud.
+
+Quirk or Contradiction: Names his servers after Pacific Northwest mushrooms and writes their traits on sticky notes.
+
+Bio & Current Focus: Tyler’s commits read like field notes—assumption headers, units everywhere, and links to data provenance. He built a tile service that serves flood depth predictions at building scale, which city planners used to stage pumps before a storm. After pushback about bias in training data, he led a data audit that documented coverage gaps and flagged where output should carry warnings. He’s prototyping an open model card for every major release, betting that transparency buys trust. A new project integrates smoke dispersion with school HVAC capacity, because clean air days matter as much as evacuation routes. On Sundays he sands cedar, letting patience temper urgency.
+

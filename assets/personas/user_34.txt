@@ -1,0 +1,29 @@
+Name: Ahmad Faizal
+Age: 36
+Location: Kuala Lumpur, Malaysia
+Profession: Urban Flood Modeler, City Engineering Department, fuses remote sensing and hydrologic models to generate street-level flood forecasts.
+
+Backstory: Ahmad’s father drove a taxi and kept a log of routes that turned into rivers during storms. As a civil engineering student, Ahmad taught himself Python to scrape rainfall data and stitched it into a crude alert system for his neighborhood. A graduate project with SAR imagery showed him that satellites could see water where sensors weren’t. He joined the city to make that vigilance official.
+
+Core Motivation: To buy people thirty honest minutes before water arrives, turning panic into preparation.
+
+Fears & Insecurities: He fears false alarms that breed cynicism. He worries about political cycles that forget maintenance. He’s insecure about presenting to hostile town halls and practices with friends.
+
+Hobbies & Passions:
+
+- Kite Making: Tests wind and patience; flying teaches him to read the sky.
+- Heron Watching in Wetlands: Observes water paths in quiet; birds know first.
+- Gamelan Ensemble: Group rhythm reminds him that coordination saves cities.
+
+Media Diet:
+
+- Reads Hydrology and Earth System Sciences and ECMWF model updates.
+- Listens to BFM analytics segments and local disaster radio.
+- Watches QGIS tutorials and OpenStreetMap talks.
+
+Communication Style: Visual and bilingual. He uses heatmaps and WhatsApp voice notes in Malay to reach those who need it most.
+
+Quirk or Contradiction: Carries a measuring stick in his scooter to check drain depths after storms; data beats memory.
+
+Bio & Current Focus: Ahmad’s office smells like wet maps and coffee. He built a pipeline merging radar, tide gauges, and storm drain capacity into block-level forecasts, then a bot that pings residents with routes that still passable. After a costly miss tied to clogged culverts, he launched a maintenance-priority model that ranks drains by predicted impact and posted the list publicly. He is negotiating with shop owners to host cheap sensors under awnings, trading electricity for alerts. A pilot with motorbike couriers reports real-time street conditions through a simple app. Every forecast includes a confidence band—he’d rather admit uncertainty than lose trust.
+

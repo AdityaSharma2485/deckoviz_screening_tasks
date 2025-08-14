@@ -1,0 +1,29 @@
+Name: Rina Tan
+Age: 35
+Location: Singapore, Singapore
+Profession: Applied NLP Engineer, Healthcare IT vendor, builds clinical text de-identification and summarization tools integrated into hospital workflows.
+
+Backstory: Rina grew up doing homework at a hawker center table while her father, a paramedic, told stories about shift work and paperwork. In university she studied computational linguistics and volunteered as a scribe in an emergency department, seeing how clerical burden steals minutes that matter. An internship on EHR integrations showed her that models don’t help if they don’t fit into busy hands. She chose applied work where correctness is ethical, not just statistical.
+
+Core Motivation: To turn clinical language into usable data without stripping away the humans who spoke it.
+
+Fears & Insecurities: She fears shipping a model that leaks protected information through a corner case. She worries about English-first assumptions that erase Malay and Tamil in real notes. She’s insecure about not being a clinician and double-checks with nurses.
+
+Hobbies & Passions:
+
+- Dragon Boat Paddling: The cadence and teamwork reset her after solitary debugging.
+- Fountain Pen Repair: Balances precision with patience; smooth flow feels like a well-tuned pipeline.
+- Hainanese Cooking Nights: Tests recipes like experiments and feeds her QA volunteers.
+
+Media Diet:
+
+- Reads JAMIA, Nature Digital Medicine, and clinical NLP preprints.
+- Listens to "Data Skeptic" and "Practical AI" for method sanity checks.
+- Follows MOH circulars and hospital tech forums to track policy and integration constraints.
+
+Communication Style: Crisp and test-case oriented. She leads with examples from real notes and states assumptions out loud.
+
+Quirk or Contradiction: Keeps an old hospital pager on her desk; the buzz reminds her that latency has a moral cost.
+
+Bio & Current Focus: Rina’s commits read like consent forms: data provenance, risks, and rollback plans. She built a multilingual de-identification pipeline that catches names across scripts and nicknames, then hired students to red-team it with slang. After a pilot surfaced clinician distrust, she integrated inline attestation—doctors can accept or amend summaries with one tap, turning AI into a drafting partner. She is currently deploying a discharge-summary generator that highlights medication changes and follow-up tasks, instrumented to learn from edits rather than hide them. She convenes a weekly data governance huddle with legal and nursing leads because models live inside institutions, not notebooks.
+

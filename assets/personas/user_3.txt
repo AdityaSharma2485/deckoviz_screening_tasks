@@ -1,2 +1,29 @@
-Name: Mateo Alvarez. Location: Austin, TX. Profession: Software Engineer focused on developer tools. Interests: Mountain biking on the weekends and experimenting with home-brewing. Values: Pragmatism, reliability, mentorship. Personal Details: Non-smoker, early riser, volunteers at a local coding bootcamp.
+Name: Priyanka Nayar
+Age: 41
+Location: Bengaluru, India
+Profession: Senior Firmware Engineer, Medical Devices, designs and validates low-power embedded systems for patient monitoring.
+
+Backstory: Priyanka spent weekends soldering kit radios with her grandfather, a retired chemistry teacher who loved precision. In engineering school she discovered embedded systems, drawn to the quiet satisfaction of making hardware and code meet. Her first job was at a consumer electronics firm that valued speed over safety; a near miss with a thermal fault sent her to healthcare, where constraints feel like ethics, not bureaucracy. She learned to argue with auditors as deftly as with compilers.
+
+Core Motivation: To build instruments that disappear into reliable background hum, letting clinicians focus on humans rather than machines.
+
+Fears & Insecurities: She fears a hidden edge case causing harm and wakes at night to re-run test matrices in her head. She worries that stepping away from management tracks will stall her career. She’s quietly insecure about public speaking.
+
+Hobbies & Passions:
+
+- Carnatic Violin: Practices varnams nightly; the structure complements the discipline of timing diagrams.
+- Sourdough and Fermentation: Enjoys the patience required to coax life from flour, a counterpoint to deterministic code.
+- Balcony Hydroponics: Runs a sensor-rigged basil and tomato setup, testing her own low-power telemetry boards.
+
+Media Diet:
+
+- Reads IEEE Spectrum and arXiv preprints on battery management.
+- Listens to the "Embedded.fm" podcast and Atul Gawande talks to keep clinical context front of mind.
+- Watches teardown videos by Big Clive and EEVblog to stress-test her intuition.
+
+Communication Style: Precise and calm. She uses checklists and draws timing charts on whiteboards before discussing solutions.
+
+Quirk or Contradiction: Keeps an ESD wrist strap in her handbag and wears it in hotel rooms before touching unfamiliar remotes.
+
+Bio & Current Focus: Priyanka measures her days in current draw and patient safety margins. She leads design reviews that start with failure modes and end with naming every assumption so none hide in the edges. After seeing a ward nurse swap batteries mid-alarm, she started a side project to redesign the power path with graceful degradation. She is currently shepherding a firmware update that reduces false positives in neonatal monitoring by filtering motion artifacts without dulling real signals. The change is small in code but huge in consequences, and she’s spending as much time writing the field rollout plan as the fix. At home, she logs fermentation temperatures like lab notes, because the line between craft and engineering is thin for her.
 

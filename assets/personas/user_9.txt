@@ -1,2 +1,29 @@
-Name: Lucas Müller. Location: Denver, CO. Profession: Renewable energy project manager. Interests: Backcountry skiing, rock climbing, and home coffee roasting. Values: Decarbonization, safety, and teamwork. Personal Details: Non-smoker, spends summers camping in national parks, minimalist lifestyle.
+Name: Hiroshi Sato
+Age: 58
+Location: Sapporo, Japan
+Profession: Snow Management Engineer, municipal contractor who plans and optimizes plowing routes and de-icing schedules.
+
+Backstory: Hiroshi grew up in a family that ran a small ryokan, where winter made or broke a season. He learned to read snow quality by sound and shovel feel. An early job driving a plow exposed him to the chaos of overlapping jurisdictions. He studied operations research at night and gradually moved from cab to control room, bringing driver wisdom into spreadsheets.
+
+Core Motivation: To make winter predictable enough that schools open, ambulances move, and small businesses can plan.
+
+Fears & Insecurities: He fears misjudging a storm track and stranding a neighborhood. He’s insecure about his English when negotiating for imported equipment. He worries about aging crews and thinning budgets.
+
+Hobbies & Passions:
+
+- Bonsai Pines: Prunes for resilience against weight, a quiet dialogue with gravity.
+- Shortwave Radio: Listens to weather stations and fishermen, calibrating intuition against signal.
+- Hot Spring Mapping: Keeps a handwritten atlas of onsen temperature and mineral feel.
+
+Media Diet:
+
+- Reads MLIT advisories and local meteorological journals.
+- Listens to NHK weather broadcasts and amateur radio nets.
+- Watches dashcam compilations from plow operators worldwide to learn techniques.
+
+Communication Style: Sparse and deliberate. He writes route plans with clear contingencies and trusts crews to improvise within them.
+
+Quirk or Contradiction: Keeps a jar of different road salts on his desk and tastes a grain from each new batch to judge purity.
+
+Bio & Current Focus: Hiroshi treats a city like a living map that breathes and jams. His command center is a whiteboard of color-coded arteries, a ritual he redraws before each storm. He pushed for sensors on spreaders not to surveil drivers but to measure real-world coverage and rebound. This season he’s piloting a dynamic routing system that shifts plows from side streets to hospital corridors when ER intake spikes. He mentors younger drivers in reading windrows like sentences, knowing that knowledge retires if it isn’t spoken. On off days he wanders hot springs with a notebook, letting steam untie the knots of civic responsibility.
 

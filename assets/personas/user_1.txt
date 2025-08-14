@@ -1,2 +1,29 @@
-Name: Alex Rivera. Location: New York, NY. Profession: AI/ML Research Scientist at a major tech firm. Interests: Passionate about nature conservation and spends weekends hiking in the Hudson Valley. Also an avid tennis player, playing in a local league twice a week. Values: Environmental sustainability, continuous learning. Personal Details: Non-smoker, enjoys quiet evenings reading science fiction.
+Name: Aisha El-Sayed
+Age: 34
+Location: Cairo, Egypt
+Profession: Public Health Data Analyst, NGO sector, translates messy clinic and field data into resource allocation plans for vaccination and maternal health programs.
+
+Backstory: Aisha grew up spending afternoons in the break room of a crowded public hospital where her mother worked as a nurse. She watched doctors argue over limited supplies and learned early how small logistics failures cascade into human consequences. In university she fell in love with statistics after a professor used a cholera map to explain how numbers can change policy. A stint managing spreadsheets for a neighborhood clinic convinced her that better data plumbing could save lives.
+
+Core Motivation: To turn fragmented, imperfect data into decisions that give dignity and access to people who usually fall through the cracks.
+
+Fears & Insecurities: She worries that her distance from patients—working in models and dashboards—makes her complicit in dehumanizing their stories. She fears shipping an analysis with a hidden assumption that harms a community. She is quietly insecure about not having a medical degree in a room full of clinicians.
+
+Hobbies & Passions:
+
+- Arabic Calligraphy: The discipline and flow steadies her mind after days of spreadsheets; she likes that every curve demands intention.
+- Desert Birdwatching: Early morning trips to Wadi El Rayan remind her to look for weak signals in complex systems.
+- Community Cooking: Hosts monthly potlucks where she experiments with regional recipes, using the kitchen as a space for informal ethnography.
+
+Media Diet:
+
+- Reads BMJ Global Health and The Lancet newsletters to track intervention evidence.
+- Listens to the "Data Skeptic" and "Aid, Evolved" podcasts to stress-test her methods and ethics.
+- Watches documentaries by Asghar Farhadi and Egyptian independent films to stay close to lived narratives.
+
+Communication Style: Measured and warm. She translates technical terms into everyday language and uses short, concrete stories before numbers.
+
+Quirk or Contradiction: Her kitchen spice rack is color-coded by flavor profile and volatility, but her desk is a chaotic pile of annotated printouts.
+
+Bio & Current Focus: Aisha is a bridge between messy reality and tidy models. She cut her teeth cleaning hand-written clinic logs, discovering that the space between "unknown" and "missing" can decide who gets a vaccine. In meetings she opens with a grandmother’s bus route before she shows the map. She is currently leading a project to forecast oxygen demand across rural governorates, stitching together procurement records, WhatsApp supply requests, and satellite data for power outages. The work is technically gnarly and politically sensitive, but she’s energized by the chance to redirect trucks before an emergency becomes a headline. Outside of work she is preparing a community cookbook that pairs recipes with short oral histories from nurses and drivers, hoping to make policy conversations more human.
 

@@ -1,0 +1,29 @@
+Name: Siti Nur Aisyah
+Age: 28
+Location: Jakarta, Indonesia
+Profession: Fisheries Data Scientist, Ministry of Marine Affairs, models stock health and designs policies for small-scale fisheries.
+
+Backstory: Siti grew up near Muara Angke, where mornings smelled of diesel and fish. She helped her mother track sales in a notebook and saw how weather, rumor, and luck shaped income. A statistics degree and an NGO internship on catch reporting revealed that data could defend small boats against industrial pressure. She joined government to move from reports to rules.
+
+Core Motivation: To keep coastal livelihoods alive by matching policy to how fish and families actually move.
+
+Fears & Insecurities: She fears models being used to punish the least powerful. She worries about seasickness on inspection trips and hides it. She’s insecure about political fights and leans on elders for tact.
+
+Hobbies & Passions:
+
+- Net Mending: Repairs with neighbors; the rhythm relaxes her and honors craft.
+- Batik with Fish Motifs: Designs patterns from scales and fins; data can be beautiful.
+- Dawn Scooter Rides to Docks: Collects stories with her phone recorder; ground truth matters.
+
+Media Diet:
+
+- Reads FAO reports, Sea Around Us data notes, and local research bulletins.
+- Listens to Mongabay podcasts about marine conservation.
+- Watches R tutorials and Shiny dashboards from peers.
+
+Communication Style: Gentle and concrete. She brings maps, timelines, and coffee to hard meetings.
+
+Quirk or Contradiction: Keeps laminated fish ID cards in her bag, edges frayed from use; they settle arguments faster than charts.
+
+Bio & Current Focus: Siti blends CPUE models with landing site interviews, documenting where numbers and stories disagree. She pushed for bycatch reduction device trials that respected boat size and crew habits, winning adoption by making the fix feel like an upgrade, not a scold. She is piloting a system that pairs AIS tracks with short dockside videos to estimate species mix without intrusive inspections. When industry lobbyists press for quotas that ignore small harbors, she invites them to dawn coffee and lets the boats speak first. Her north star is not a perfect graph but a season where fewer families sell nets for school fees.
+

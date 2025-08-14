@@ -1,5 +1,6 @@
 import os
 import streamlit as st
+import pandas as pd
 
 from tasks.task_1_search import initialize_search_engine, perform_search
 from tasks.task_2_audiobook import preprocess_pdf, synthesize_all_voices
@@ -16,11 +17,18 @@ st.set_page_config(page_title="Deckoviz Screening App", layout="centered")
 st.title("Deckoviz Screening Test Submission")
 
 
+@st.cache_data
+def load_persona_data():
+    """Load personas_index.csv into a pandas DataFrame (cached)."""
+    csv_path = os.path.join(PERSONAS_DIR, "personas_index.csv")
+    df = pd.read_csv(csv_path)
+    return df
+
 with st.sidebar:
     st.header("Navigation")
     page = st.radio(
         "Go to",
-        ["Natural Language Search", "PDF to Audiobook", "Storybook Creator"],
+        ["Natural Language Search", "PDF to Audiobook", "Storybook Creator", "Persona Showcase"],
         index=1,  # Start on the audiobook page for convenience
     )
     st.markdown("---")
@@ -117,5 +125,62 @@ elif page == "Storybook Creator":
                     st.download_button("Download Storybook PDF", data=pdf_bytes, file_name=os.path.basename(pdf_path), mime="application/pdf")
                 except Exception as e:
                     st.error(f"Failed to create storybook: {e}")
+
+elif page == "Persona Showcase":
+    st.subheader("Persona Showcase")
+    try:
+        df = load_persona_data()
+    except Exception as e:
+        st.error(f"Failed to load persona index: {e}")
+        df = None
+
+    if df is not None and not df.empty:
+        total = len(df)
+        if "persona_index" not in st.session_state:
+            st.session_state.persona_index = 0
+
+        col1, col2 = st.columns(2)
+        with col1:
+            if st.button("Previous"):
+                st.session_state.persona_index = (st.session_state.persona_index - 1) % total
+        with col2:
+            if st.button("Next"):
+                st.session_state.persona_index = (st.session_state.persona_index + 1) % total
+
+        idx = st.session_state.persona_index % total
+        row = df.iloc[idx]
+
+        name = row.get("name", "Unknown")
+        age = row.get("age", "?")
+        location = row.get("location", "Unknown")
+        profession = row.get("profession", "")
+        tags = row.get("tags", "")
+        filename = row.get("file", None)
+
+        st.subheader(str(name))
+
+        m1, m2 = st.columns(2)
+        with m1:
+            st.metric("Age", str(age))
+        with m2:
+            st.metric("Location", str(location))
+
+        st.markdown(f"**Profession:** {profession}")
+        st.markdown(f"**Tags:** {tags}")
+
+        if filename:
+            persona_path = os.path.join(PERSONAS_DIR, filename)
+            with st.expander("View Full Persona Bio"):
+                try:
+                    with open(persona_path, "r", encoding="utf-8") as f:
+                        bio = f.read()
+                    st.text(bio)
+                except Exception as e:
+                    st.warning(f"Unable to load persona bio: {e}")
+        else:
+            st.info("No persona file specified for this entry.")
+        st.caption(f"Viewing {idx + 1} of {total}")
+    else:
+        st.info("No personas available to display.")
 
 
