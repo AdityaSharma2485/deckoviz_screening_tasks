@@ -1,0 +1,11 @@
+streamlit
+pdfplumber
+gTTS
+sentence-transformers
+chromadb
+openai
+google-generativeai
+requests
+Pillow
+reportlab
+
