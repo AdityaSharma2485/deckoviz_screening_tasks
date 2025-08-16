@@ -46,48 +46,38 @@ page = selected_page
 # Page: Natural Language Search
 # --------------------------------------------------
 if page == "Natural Language Search":
-    try:
-        from tasks.task_1_search import initialize_search_engine, perform_search
-        st.subheader("Task 1: Natural Language Search (RAG)")
-        st.caption("Multi-query retrieval + heuristic re-ranking.")
+    from tasks.task_1_search import initialize_search_engine, perform_search
+    st.subheader("Task 1: Natural Language Search (RAG)")
+    st.caption("Multi-query retrieval + heuristic re-ranking.")
 
-        c1, c2 = st.columns(2)
-        with c1:
-            if st.button("Initialize / Load Collection"):
-                with st.spinner("Initializing..."):
-                    try:
-                        info = initialize_search_engine()
-                        st.success(info.get("message", "Initialized"))
-                    except Exception as e:
-                        st.error(f"Initialization failed: {e}")
-        with c2:
-            if st.button("Force Reindex"):
-                with st.spinner("Re-indexing..."):
-                    try:
-                        info = initialize_search_engine(force_reindex=True)
-                        st.success(info.get("message", "Re-index complete"))
-                    except Exception as e:
-                        st.error(f"Re-indexing failed: {e}")
+    c1, c2 = st.columns(2)
+    with c1:
+        if st.button("Initialize / Load Collection"):
+            with st.spinner("Initializing..."):
+                info = initialize_search_engine()
+            st.success(info.get("message", "Initialized"))
+    with c2:
+        if st.button("Force Reindex"):
+            with st.spinner("Re-indexing..."):
+                info = initialize_search_engine(force_reindex=True)
+            st.success(info.get("message", "Re-index complete"))
 
-        query = st.text_area(
-            "Describe who you're looking for",
-            height=140,
-            placeholder="Example: Outdoorsy non-smoker in NYC who loves tennis. Don't want smokers.",
-            key="rag_query",
-        )
+    # Persist the query using a key so it doesn't clear on rerun
+    query = st.text_area(
+        "Describe who you're looking for",
+        height=140,
+        placeholder="Example: Outdoorsy non-smoker in NYC who loves tennis. Don't want smokers.",
+        key="rag_query",
+    )
 
-        if st.button("Search", key="rag_search_button"):
-            if not query.strip():
-                st.warning("Please enter a query")
-            else:
-                with st.spinner("Searching..."):
-                    try:
-                        results = perform_search(query)
-                        st.json(results)
-                    except Exception as e:
-                        st.error(f"Search failed: {e}")
-    except ImportError as e:
-        st.error(f"Task 1 module not available: {e}")
+
+    if st.button("Search", key="rag_search_button"):
+        if not query.strip():
+            st.warning("Please enter a query")
+        else:
+            with st.spinner("Searching..."):
+                results = perform_search(query)
+            st.json(results)
 
 # --------------------------------------------------
 # Page: PDF to Audiobook
