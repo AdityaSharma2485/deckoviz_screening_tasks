@@ -29,55 +29,163 @@ def load_persona_data():
     return pd.read_csv(csv_path)
 
 # --------------------------------------------------
-# Sidebar Navigation (Fixed)
+# Centralized Session State Management
+# --------------------------------------------------
+def initialize_session_state():
+    """Initialize all session state keys consistently."""
+    # Navigation state
+    if "current_page" not in st.session_state:
+        st.session_state.current_page = "PDF to Audiobook"  # Default page
+    
+    # Natural Language Search state
+    session_keys_rag = {
+        "rag_query": "",
+        "rag_results": None
+    }
+    
+    # PDF to Audiobook state
+    session_keys_audiobook = {
+        "audiobook_text": None,
+        "audiobook_results": {},
+        "last_pdf_name": None
+    }
+    
+    # Storybook Creator state
+    session_keys_storybook = {
+        "storybook_sections": [],
+        "storybook_images": [],
+        "storybook_page": 0,
+        "storybook_audio": {},
+        "last_generation_params": None,
+        "storybook_text": "",
+        "storybook_input_mode": "Text"
+    }
+    
+    # Persona Showcase state
+    session_keys_persona = {
+        "persona_index": 0
+    }
+    
+    # Initialize all keys
+    all_keys = {**session_keys_rag, **session_keys_audiobook, **session_keys_storybook, **session_keys_persona}
+    
+    for key, default_value in all_keys.items():
+        if key not in st.session_state:
+            st.session_state[key] = default_value
+
+def clear_page_state(page_name: str):
+    """Clear session state for specific page when needed."""
+    if page_name == "PDF to Audiobook":
+        keys_to_clear = ["audiobook_text", "audiobook_results", "last_pdf_name"]
+    elif page_name == "Storybook Creator":
+        keys_to_clear = ["storybook_sections", "storybook_images", "storybook_page", 
+                        "storybook_audio", "last_generation_params"]
+    elif page_name == "Natural Language Search":
+        keys_to_clear = ["rag_results"]
+    elif page_name == "Persona Showcase":
+        keys_to_clear = ["persona_index"]
+    else:
+        keys_to_clear = []
+    
+    for key in keys_to_clear:
+        if key in st.session_state:
+            if isinstance(st.session_state[key], dict):
+                st.session_state[key] = {}
+            elif isinstance(st.session_state[key], list):
+                st.session_state[key] = []
+            elif isinstance(st.session_state[key], int):
+                st.session_state[key] = 0
+            else:
+                st.session_state[key] = None
+
+# Initialize session state
+initialize_session_state()
+
+# --------------------------------------------------
+# Sidebar Navigation (Fixed with Session State)
 # --------------------------------------------------
 NAV_PAGES = ["Natural Language Search", "PDF to Audiobook", "Storybook Creator", "Persona Showcase"]
 
 with st.sidebar:
     st.header("Navigation")
-    # Fixed navigation - removed conflicting key
-    selected_page = st.radio("Go to", NAV_PAGES, index=1)
+    
+    # Get current page from session state
+    current_page_index = NAV_PAGES.index(st.session_state.current_page) if st.session_state.current_page in NAV_PAGES else 1
+    
+    # Use session state for navigation persistence
+    selected_page = st.radio(
+        "Go to", 
+        NAV_PAGES, 
+        index=current_page_index,
+        key="navigation_radio"
+    )
+    
+    # Update session state if page changed
+    if selected_page != st.session_state.current_page:
+        st.session_state.current_page = selected_page
+        st.rerun()
+    
     st.markdown("---")
+    
+    # Optional: Add clear state button for current page
+    if st.button("Clear Current Page State", help="Reset the current page to its initial state"):
+        clear_page_state(st.session_state.current_page)
+        st.success(f"Cleared state for {st.session_state.current_page}")
+        st.rerun()
 
-# Use the selected page directly instead of session state for navigation
-page = selected_page
+# Use session state for page selection
+page = st.session_state.current_page
 
 # --------------------------------------------------
 # Page: Natural Language Search
 # --------------------------------------------------
 if page == "Natural Language Search":
-    from tasks.task_1_search import initialize_search_engine, perform_search
-    st.subheader("Task 1: Natural Language Search (RAG)")
-    st.caption("Multi-query retrieval + heuristic re-ranking.")
+    try:
+        from tasks.task_1_search import initialize_search_engine, perform_search
+        st.subheader("Task 1: Natural Language Search (RAG)")
+        st.caption("Multi-query retrieval + heuristic re-ranking.")
 
-    c1, c2 = st.columns(2)
-    with c1:
-        if st.button("Initialize / Load Collection"):
-            with st.spinner("Initializing..."):
-                info = initialize_search_engine()
-            st.success(info.get("message", "Initialized"))
-    with c2:
-        if st.button("Force Reindex"):
-            with st.spinner("Re-indexing..."):
-                info = initialize_search_engine(force_reindex=True)
-            st.success(info.get("message", "Re-index complete"))
+        c1, c2 = st.columns(2)
+        with c1:
+            if st.button("Initialize / Load Collection", key="init_search_btn"):
+                with st.spinner("Initializing..."):
+                    info = initialize_search_engine()
+                st.success(info.get("message", "Initialized"))
+        with c2:
+            if st.button("Force Reindex", key="reindex_search_btn"):
+                with st.spinner("Re-indexing..."):
+                    info = initialize_search_engine(force_reindex=True)
+                st.success(info.get("message", "Re-index complete"))
 
-    # Persist the query using a key so it doesn't clear on rerun
-    query = st.text_area(
-        "Describe who you're looking for",
-        height=140,
-        placeholder="Example: Outdoorsy non-smoker in NYC who loves tennis. Don't want smokers.",
-        key="rag_query",
-    )
+        # Use session state for query persistence
+        query = st.text_area(
+            "Describe who you're looking for",
+            height=140,
+            placeholder="Example: Outdoorsy non-smoker in NYC who loves tennis. Don't want smokers.",
+            value=st.session_state.rag_query,
+            key="rag_query_input",
+        )
+        
+        # Update session state when query changes
+        if query != st.session_state.rag_query:
+            st.session_state.rag_query = query
 
-
-    if st.button("Search", key="rag_search_button"):
-        if not query.strip():
-            st.warning("Please enter a query")
-        else:
-            with st.spinner("Searching..."):
-                results = perform_search(query)
-            st.json(results)
+        if st.button("Search", key="rag_search_button"):
+            if not query.strip():
+                st.warning("Please enter a query")
+            else:
+                with st.spinner("Searching..."):
+                    results = perform_search(query)
+                st.session_state.rag_results = results
+                st.json(results)
+        
+        # Display previous results if available
+        elif st.session_state.rag_results is not None:
+            st.subheader("Previous Results:")
+            st.json(st.session_state.rag_results)
+    
+    except ImportError as e:
+        st.error(f"Task 1 module not available: {e}")
 
 # --------------------------------------------------
 # Page: PDF to Audiobook
@@ -92,17 +200,6 @@ elif page == "PDF to Audiobook":
 
         st.subheader("Task 2: PDF to Audiobook")
         st.caption("Upload a PDF, extract text, generate all voices, then choose & play.")
-
-        # Initialize session state with proper keys
-        session_keys = {
-            "audiobook_text": None,
-            "audiobook_results": {},
-            "last_pdf_name": None
-        }
-        
-        for key, default in session_keys.items():
-            if key not in st.session_state:
-                st.session_state[key] = default
 
         pdf = st.file_uploader("Upload a PDF", type=["pdf"], key="pdf_upload")
 
@@ -125,7 +222,7 @@ elif page == "PDF to Audiobook":
                 txt = st.session_state.audiobook_text
                 st.write(txt[:10000] + ("..." if len(txt) > 10000 else ""))
 
-            if not st.session_state.audiobook_results and st.button("Generate All Voices"):
+            if not st.session_state.audiobook_results and st.button("Generate All Voices", key="generate_voices_btn"):
                 with st.spinner("Generating voices..."):
                     try:
                         st.session_state.audiobook_results = synthesize_all_voices(
@@ -157,6 +254,7 @@ elif page == "PDF to Audiobook":
                             f"Download {voice}",
                             data=audio_bytes,
                             file_name=os.path.basename(path),
+                            key=f"download_{voice}",
                         )
                     except Exception as e:
                         st.error(f"Failed to load audio file: {e}")
@@ -169,7 +267,7 @@ elif page == "PDF to Audiobook":
                             try:
                                 retry_info = synthesize_single_voice(st.session_state.audiobook_text, voice, attempts=2)
                                 st.session_state.audiobook_results[voice] = retry_info
-                                st.rerun()  # Fixed: replaced experimental_rerun
+                                st.rerun()
                             except Exception as e:
                                 st.error(f"Retry failed: {e}")
     except ImportError as e:
@@ -189,23 +287,31 @@ elif page == "Storybook Creator":
         )
 
         st.subheader("Task 3: Storybook Creator")
-        
-        # Initialize session state with better key management
-        if "storybook_sections" not in st.session_state:
-            st.session_state.storybook_sections = []
-        if "storybook_images" not in st.session_state:
-            st.session_state.storybook_images = []
-        if "storybook_page" not in st.session_state:
-            st.session_state.storybook_page = 0
-        if "storybook_audio" not in st.session_state:
-            st.session_state.storybook_audio = {}
-        if "last_generation_params" not in st.session_state:
-            st.session_state.last_generation_params = None
 
-        input_mode = st.radio("Input Type", ["Text", "PDF"], horizontal=True, key="storybook_input_mode")
+        # Use session state for input mode persistence
+        input_mode = st.radio(
+            "Input Type", 
+            ["Text", "PDF"], 
+            horizontal=True, 
+            index=0 if st.session_state.storybook_input_mode == "Text" else 1,
+            key="storybook_input_mode_radio"
+        )
+        
+        # Update session state
+        if input_mode != st.session_state.storybook_input_mode:
+            st.session_state.storybook_input_mode = input_mode
         
         if input_mode == "Text":
-            story_text = st.text_area("Enter story text", height=180, placeholder="Once upon a time...", key="storybook_text")
+            story_text = st.text_area(
+                "Enter story text", 
+                height=180, 
+                placeholder="Once upon a time...", 
+                value=st.session_state.storybook_text,
+                key="storybook_text_input"
+            )
+            # Update session state when text changes
+            if story_text != st.session_state.storybook_text:
+                st.session_state.storybook_text = story_text
         else:
             uploaded_pdf = st.file_uploader("Upload a PDF story", type=["pdf"], key="storybook_pdf")
             if uploaded_pdf is not None and st.checkbox("Preview extracted text before generating", value=False, key="preview_checkbox"):
@@ -243,7 +349,7 @@ elif page == "Storybook Creator":
             if uploaded_pdf is not None:
                 can_generate = True
         else:
-            story_text_to_use = st.session_state.get("storybook_text", "")
+            story_text_to_use = st.session_state.storybook_text
             if story_text_to_use.strip():
                 can_generate = True
 
@@ -262,7 +368,7 @@ elif page == "Storybook Creator":
                     st.warning("Please enter some story text.")
                 else:
                     # Preserve current page if possible
-                    current_page_before_generation = st.session_state.get("storybook_page", 0)
+                    current_page_before_generation = st.session_state.storybook_page
                     
                     with st.spinner("Creating sections & generating images..."):
                         try:
@@ -311,15 +417,15 @@ elif page == "Storybook Creator":
             st.info("Please provide story content (text or PDF) to generate storybook.")
 
         # Display existing storybook (separate from generation)
-        sections = st.session_state.get("storybook_sections", [])
-        images = st.session_state.get("storybook_images", [])
+        sections = st.session_state.storybook_sections
+        images = st.session_state.storybook_images
         
         if sections and images and len(sections) == len(images):
             st.markdown("---")
             st.markdown("### Generated Storybook")
             
             total_pages = len(sections)
-            current_page = st.session_state.get("storybook_page", 0)
+            current_page = st.session_state.storybook_page
             
             # Ensure page is within bounds (safety check)
             current_page = max(0, min(current_page, total_pages - 1))
@@ -432,16 +538,16 @@ elif page == "Persona Showcase":
         
         if df is not None and not df.empty:
             total = len(df)
-            if "persona_index" not in st.session_state:
-                st.session_state.persona_index = 0
 
             col1, col2 = st.columns(2)
             with col1:
                 if st.button("Previous", key="persona_prev"):
                     st.session_state.persona_index = (st.session_state.persona_index - 1) % total
+                    st.rerun()
             with col2:
                 if st.button("Next", key="persona_next"):
                     st.session_state.persona_index = (st.session_state.persona_index + 1) % total
+                    st.rerun()
 
             idx = st.session_state.persona_index % total
             row = df.iloc[idx]
