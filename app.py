@@ -4,21 +4,24 @@ import streamlit as st
 import pandas as pd
 import edge_tts
 
-from tasks.task_1_search import initialize_search_engine, perform_search
-from tasks.task_2_audiobook import preprocess_pdf, synthesize_all_voices
-from tasks.task_3_storybook import (
-    create_sections,
-    create_prompts,
-    generate_segmind_image,
-    create_storybook,
-)
+# ------------------------------------------------------------------
+# Inject newer SQLite (needed for Chroma on some hosted images)
+# Must precede any indirect chromadb import (we do lazy imports later).
+# ------------------------------------------------------------------
+try:  # pragma: no cover
+    __import__("pysqlite3")
+    import sys
+    sys.modules["sqlite3"] = sys.modules.pop("pysqlite3")  # type: ignore
+except Exception:
+    pass
 
-
+# ------------------------------------------------------------------
+# Paths & Basic Setup
+# ------------------------------------------------------------------
 ASSETS_DIR = os.path.join(os.path.dirname(__file__), "assets")
 OUTPUTS_DIR = os.path.join(ASSETS_DIR, "outputs")
 PERSONAS_DIR = os.path.join(ASSETS_DIR, "personas")
 os.makedirs(OUTPUTS_DIR, exist_ok=True)
-
 
 st.set_page_config(page_title="Storybook Creator", layout="centered")
 
@@ -27,40 +30,63 @@ st.set_page_config(page_title="Storybook Creator", layout="centered")
 def load_persona_data():
     """Load personas_index.csv into a pandas DataFrame (cached)."""
     csv_path = os.path.join(PERSONAS_DIR, "personas_index.csv")
-    df = pd.read_csv(csv_path)
-    return df
+    return pd.read_csv(csv_path)
+
 
 with st.sidebar:
     st.header("Navigation")
     page = st.radio(
         "Go to",
         ["Natural Language Search", "PDF to Audiobook", "Storybook Creator", "Persona Showcase"],
-        index=1,  # Start on the audiobook page for convenience
+        index=1,
     )
     st.markdown("---")
-    
 
 
+# ------------------------------------------------------------------
+# Page: Natural Language Search
+# ------------------------------------------------------------------
 if page == "Natural Language Search":
-    st.subheader("Task 1: Natural Language Search (RAG)")
-    if st.button("Initialize/Search Engine"):
-        with st.spinner("Initializing ChromaDB and indexing personas..."):
-            info = initialize_search_engine()
-        st.success(info.get("message", "Initialized"))
+    # Lazy import heavy search module only when needed
+    from tasks.task_1_search import initialize_search_engine, perform_search
 
-    query = st.text_area("Describe who you're looking for", height=120, placeholder="Example: Outdoorsy non-smoker in NYC who loves tennis. Don't want smokers.")
+    st.subheader("Task 1: Natural Language Search (RAG)")
+    st.caption("Multi-query retrieval + heuristic re-ranking. Click initialize once after startup.")
+
+    init_col, reindex_col = st.columns(2)
+    with init_col:
+        if st.button("Initialize / Load Collection"):
+            with st.spinner("Initializing ChromaDB and indexing personas..."):
+                info = initialize_search_engine()
+            st.success(info.get("message", "Initialized"))
+    with reindex_col:
+        if st.button("Force Reindex"):
+            with st.spinner("Rebuilding embeddings..."):
+                info = initialize_search_engine(force_reindex=True)
+            st.success(info.get("message", "Re-index complete"))
+
+    query = st.text_area(
+        "Describe who you're looking for",
+        height=140,
+        placeholder="Example: Outdoorsy non-smoker in NYC who loves tennis. Don't want smokers.",
+    )
     if st.button("Search"):
         if not query.strip():
             st.warning("Please enter a query")
         else:
-            with st.spinner("Searching and reasoning with Gemini..."):
+            with st.spinner("Searching (may call LLM if configured)..."):
                 results = perform_search(query)
             st.write("Results:")
             st.json(results)
 
+# ------------------------------------------------------------------
+# Page: PDF to Audiobook
+# ------------------------------------------------------------------
 elif page == "PDF to Audiobook":
+    from tasks.task_2_audiobook import preprocess_pdf, synthesize_all_voices
+
     st.subheader("Task 2: PDF to Audiobook")
-    st.markdown("This version pre-processes your PDF and pre-generates all four Edge TTS voice options for instant playback.")
+    st.caption("Extracts & cleans text; generates four Edge TTS voices on demand.")
 
     if "audiobook_text" not in st.session_state:
         st.session_state["audiobook_text"] = None
@@ -71,36 +97,34 @@ elif page == "PDF to Audiobook":
 
     pdf = st.file_uploader("Upload a PDF", type=["pdf"], key="pdf_upload")
 
-    # If a new PDF is uploaded, clear previous session state and preprocess only
     if pdf is not None:
         current_name = getattr(pdf, "name", None)
         if current_name != st.session_state.get("last_pdf_name"):
             st.session_state["last_pdf_name"] = current_name
             st.session_state["audiobook_text"] = None
             st.session_state["audiobook_paths"] = None
-            with st.spinner("Preprocessing PDF (extracting and cleaning text)..."):
+            with st.spinner("Extracting and cleaning text..."):
                 try:
                     cleaned_text = preprocess_pdf(pdf)
                     st.session_state["audiobook_text"] = cleaned_text
-                    st.success("Text extracted!")
+                    st.success("Text extracted.")
                 except Exception as e:
                     st.error(f"Preprocessing failed: {e}")
 
     if st.session_state.get("audiobook_text"):
-        with st.expander("View Extracted Text", expanded=False):
+        with st.expander("View Extracted Text"):
             st.write(st.session_state["audiobook_text"])
 
-        # Generate all voices on-demand via button
-        if st.session_state.get("audiobook_paths") is None:
-            if st.button("Generate Voices (All at once)"):
-                with st.spinner("Generating all voice options..."):
-                    try:
-                        st.session_state["audiobook_paths"] = synthesize_all_voices(st.session_state["audiobook_text"])
-                        st.success("All voices generated!")
-                    except Exception as e:
-                        st.error(f"Voice generation failed: {e}")
+        if st.session_state.get("audiobook_paths") is None and st.button("Generate All Voices"):
+            with st.spinner("Generating Edge TTS voices..."):
+                try:
+                    st.session_state["audiobook_paths"] = synthesize_all_voices(
+                        st.session_state["audiobook_text"]
+                    )
+                    st.success("Voices generated!")
+                except Exception as e:
+                    st.error(f"Voice generation failed: {e}")
 
-        # If voices exist, let the user select and play/download instantly
         if st.session_state.get("audiobook_paths"):
             voice = st.radio(
                 "Choose a Voice",
@@ -109,45 +133,55 @@ elif page == "PDF to Audiobook":
             )
             chosen_path = st.session_state["audiobook_paths"].get(voice)
             if chosen_path and os.path.exists(chosen_path):
-                audio_bytes = open(chosen_path, "rb").read()
+                with open(chosen_path, "rb") as f:
+                    audio_bytes = f.read()
                 st.audio(audio_bytes, format="audio/mp3")
                 st.download_button("Download MP3", data=audio_bytes, file_name=os.path.basename(chosen_path))
             else:
-                st.info("Click 'Generate Voices' to produce audio files for playback.")
+                st.info("Click 'Generate All Voices' to produce audio files.")
 
+# ------------------------------------------------------------------
+# Page: Storybook Creator
+# ------------------------------------------------------------------
 elif page == "Storybook Creator":
+    from tasks.task_2_audiobook import preprocess_pdf
+    from tasks.task_3_storybook import (
+        create_sections,
+        create_prompts,
+        generate_segmind_image,
+        create_storybook,
+    )
+
     st.subheader("Task 3: Storybook Creator")
 
-    # Session storage for interactive viewer
-    if "storybook_sections" not in st.session_state:
-        st.session_state["storybook_sections"] = []
-    if "storybook_images" not in st.session_state:
-        st.session_state["storybook_images"] = []  # List[bytes]
-    if "storybook_page" not in st.session_state:
-        st.session_state["storybook_page"] = 0
-    if "storybook_audio" not in st.session_state:
-        st.session_state["storybook_audio"] = {}  # Dict[int, bytes]
+    # Session state
+    for key, default in [
+        ("storybook_sections", []),
+        ("storybook_images", []),
+        ("storybook_page", 0),
+        ("storybook_audio", {}),
+    ]:
+        if key not in st.session_state:
+            st.session_state[key] = default
 
-    # Input mode (Text or PDF)
-    input_mode = st.radio("Choose input type", ["Text", "PDF"], horizontal=True)
-
+    input_mode = st.radio("Input Type", ["Text", "PDF"], horizontal=True)
     story_text = ""
     uploaded_pdf = None
+
     if input_mode == "Text":
-        story_text = st.text_area("Enter story text", height=200, placeholder="Once upon a time...")
+        story_text = st.text_area("Enter story text", height=180, placeholder="Once upon a time...")
     else:
         uploaded_pdf = st.file_uploader("Upload a PDF story", type=["pdf"], key="storybook_pdf")
         if uploaded_pdf is not None and st.checkbox("Preview extracted text before generating", value=False):
             try:
-                with st.spinner("Extracting and cleaning text from PDF..."):
+                with st.spinner("Extracting text from PDF..."):
                     preview_text = preprocess_pdf(uploaded_pdf)
-                with st.expander("Extracted Text Preview", expanded=False):
+                with st.expander("Extracted Text Preview"):
                     st.write(preview_text)
             except Exception as e:
                 st.warning(f"Preview extraction failed: {e}")
 
-    # Controls line: sections and per-section word slider
-    col_sections, col_words = st.columns([1, 1])
+    col_sections, col_words = st.columns(2)
     with col_sections:
         num_sections = st.number_input(
             "Sections",
@@ -155,42 +189,42 @@ elif page == "Storybook Creator":
             max_value=10,
             value=6,
             step=1,
-            help="How many story pages to generate (image + text)",
         )
     with col_words:
-        per_section_words = st.slider("Words per section", min_value=80, max_value=140, value=110, step=5)
+        per_section_words = st.slider("Words per section", 80, 140, 110, step=5)
 
-    # Full-width generate button below
-    generate_clicked = st.button("Generate Storybook", use_container_width=True)
-
-    if generate_clicked:
-        # Resolve source text
+    if st.button("Generate Storybook", use_container_width=True):
         if input_mode == "PDF":
             if uploaded_pdf is None:
-                st.warning("Please upload a PDF or switch to Text input.")
+                st.warning("Please upload a PDF or switch to Text.")
                 st.stop()
             try:
-                with st.spinner("Extracting and cleaning text from PDF..."):
+                with st.spinner("Extracting text from PDF..."):
                     story_text = preprocess_pdf(uploaded_pdf)
             except Exception as e:
                 st.error(f"Failed to extract text from PDF: {e}")
                 st.stop()
+
         if not story_text.strip():
             st.warning("Please enter some story text.")
         else:
-            with st.spinner("Creating summarized sections and generating images..."):
+            with st.spinner("Creating sections & generating images..."):
                 try:
-                    sections = create_sections(story_text, desired_sections=num_sections, per_section_words=int(per_section_words))
+                    sections = create_sections(
+                        story_text,
+                        desired_sections=num_sections,
+                        per_section_words=int(per_section_words),
+                    )
                     if not sections:
-                        st.error("Could not create sections from the provided text.")
+                        st.error("Could not create sections from text.")
                         st.stop()
                     prompts = create_prompts(sections)
-                    images: list[bytes] = []
+                    images: List[bytes] = []
                     progress = st.progress(0)
                     for i, pr in enumerate(prompts):
                         img_bytes = generate_segmind_image(pr)
                         images.append(img_bytes)
-                        progress.progress(int((i + 1) / max(1, len(prompts)) * 100))
+                        progress.progress(int((i + 1) / len(prompts) * 100))
                 except Exception as e:
                     st.error(f"Generation failed: {e}")
                     st.stop()
@@ -199,32 +233,31 @@ elif page == "Storybook Creator":
                 st.session_state["storybook_images"] = images
                 st.session_state["storybook_page"] = 0
                 st.session_state["storybook_audio"] = {}
-                st.success("Story generated! Use the viewer below.")
+                st.success("Story generated! Scroll down to view.")
 
     # Viewer
     sections = st.session_state.get("storybook_sections", [])
     images = st.session_state.get("storybook_images", [])
+
     if sections and images and len(sections) == len(images):
         total_pages = len(sections)
-        page = st.session_state.get("storybook_page", 0)
-        page = max(0, min(page, total_pages - 1))
-        st.session_state["storybook_page"] = page
+        current_page = st.session_state.get("storybook_page", 0)
+        current_page = max(0, min(current_page, total_pages - 1))
+        st.session_state["storybook_page"] = current_page
 
         left, right = st.columns([1, 1])
         with left:
             try:
-                st.image(images[page], use_container_width=True)
+                st.image(images[current_page], use_container_width=True)
             except Exception:
                 st.warning("Unable to display image for this page.")
         with right:
-            st.markdown(f"### Page {page + 1}")
-            # Render text with chosen font size
+            st.markdown(f"### Page {current_page + 1}")
             fs_px = 16
-            styled = f"<div style='font-size:{fs_px}px; line-height:1.5;'>{sections[page]}</div>"
+            styled = f"<div style='font-size:{fs_px}px; line-height:1.5;'>{sections[current_page]}</div>"
             st.markdown(styled, unsafe_allow_html=True)
 
-            # Per-page TTS
-            narrate_key = f"narrate_{page}"
+            narrate_key = f"narrate_{current_page}"
             if st.button("🔊 Narrate this page", key=narrate_key):
                 async def _synthesize_page_audio(text: str) -> bytes:
                     tts = edge_tts.Communicate(text, "en-US-JennyNeural")
@@ -235,38 +268,33 @@ elif page == "Storybook Creator":
                     return bytes(audio_data)
 
                 try:
-                    audio_bytes = asyncio.run(_synthesize_page_audio(sections[page]))
-                    st.session_state["storybook_audio"][page] = audio_bytes
+                    audio_bytes = asyncio.run(_synthesize_page_audio(sections[current_page]))
+                    st.session_state["storybook_audio"][current_page] = audio_bytes
                 except Exception as e:
                     st.error(f"TTS failed: {e}")
 
-            if page in st.session_state["storybook_audio"]:
-                st.audio(st.session_state["storybook_audio"][page], format="audio/mp3")
+            if current_page in st.session_state["storybook_audio"]:
+                st.audio(st.session_state["storybook_audio"][current_page], format="audio/mp3")
 
         nav1, mid, nav2 = st.columns([1, 2, 1])
         with nav1:
             if st.button("⬅️ Previous", disabled=(total_pages <= 1)):
-                st.session_state["storybook_page"] = (page - 1) % total_pages
+                st.session_state["storybook_page"] = (current_page - 1) % total_pages
         with nav2:
             if st.button("Next ➡️", disabled=(total_pages <= 1)):
-                st.session_state["storybook_page"] = (page + 1) % total_pages
+                st.session_state["storybook_page"] = (current_page + 1) % total_pages
 
-        # PDF export controls (font, size, layout)
         st.markdown("---")
-        exp_col1, exp_col2, exp_col3 = st.columns([1, 1, 1])
+        exp_col1, exp_col2, exp_col3 = st.columns(3)
         with exp_col1:
-            export_font = st.selectbox(
-                "Export font",
-                ["Helvetica", "Times-Roman", "Courier"],
-                index=0,
-            )
+            export_font = st.selectbox("Export font", ["Helvetica", "Times-Roman", "Courier"], index=0)
         with exp_col2:
-            export_font_size = st.number_input("Export font size", min_value=10, max_value=18, value=12, step=1)
+            export_font_size = st.number_input("Export font size", 10, 18, 12, step=1)
         with exp_col3:
             export_layout = st.radio("Layout", ["alternate", "combined"], index=0, horizontal=True)
 
-        # Single-step export: clicking the download button triggers the file download
         try:
+            from tasks.task_3_storybook import create_storybook
             pdf_path = create_storybook(
                 sections=sections,
                 image_bytes_list=images,
@@ -285,6 +313,9 @@ elif page == "Storybook Creator":
         except Exception as e:
             st.error(f"Failed to generate PDF: {e}")
 
+# ------------------------------------------------------------------
+# Page: Persona Showcase
+# ------------------------------------------------------------------
 elif page == "Persona Showcase":
     st.subheader("Persona Showcase")
     try:
@@ -317,13 +348,9 @@ elif page == "Persona Showcase":
         filename = row.get("file", None)
 
         st.subheader(str(name))
-
         m1, m2 = st.columns(2)
-        with m1:
-            st.metric("Age", str(age))
-        with m2:
-            st.metric("Location", str(location))
-
+        m1.metric("Age", str(age))
+        m2.metric("Location", str(location))
         st.markdown(f"**Profession:** {profession}")
         st.markdown(f"**Tags:** {tags}")
 
@@ -341,5 +368,3 @@ elif page == "Persona Showcase":
         st.caption(f"Viewing {idx + 1} of {total}")
     else:
         st.info("No personas available to display.")
-
-
