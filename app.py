@@ -436,7 +436,7 @@ elif page == "Storybook Creator":
             with left:
                 try:
                     if images[current_page]:
-                        st.image(images[current_page], use_container_width=True)
+                        st.image(images[current_page], use_column_width=True)
                     else:
                         st.info("Image not available for this page.")
                 except Exception as e:
