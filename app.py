@@ -200,22 +200,20 @@ elif page == "Storybook Creator":
 
         st.subheader("Task 3: Storybook Creator")
         
-        # Initialize session state
-        session_defaults = {
-            "storybook_sections": [],
-            "storybook_images": [],
-            "storybook_page": 0,
-            "storybook_audio": {},
-        }
-        
-        for key, default in session_defaults.items():
-            if key not in st.session_state:
-                st.session_state[key] = default
+        # Initialize session state with better key management
+        if "storybook_sections" not in st.session_state:
+            st.session_state.storybook_sections = []
+        if "storybook_images" not in st.session_state:
+            st.session_state.storybook_images = []
+        if "storybook_page" not in st.session_state:
+            st.session_state.storybook_page = 0
+        if "storybook_audio" not in st.session_state:
+            st.session_state.storybook_audio = {}
+        if "last_generation_params" not in st.session_state:
+            st.session_state.last_generation_params = None
 
         input_mode = st.radio("Input Type", ["Text", "PDF"], horizontal=True, key="storybook_input_mode")
-        story_text = ""
-        uploaded_pdf = None
-
+        
         if input_mode == "Text":
             story_text = st.text_area("Enter story text", height=180, placeholder="Once upon a time...", key="storybook_text")
         else:
@@ -229,87 +227,138 @@ elif page == "Storybook Creator":
                 except Exception as e:
                     st.warning(f"Preview extraction failed: {e}")
 
+        # Separate parameter controls from generation
+        st.markdown("### Generation Parameters")
         col_sections, col_words = st.columns(2)
         with col_sections:
             num_sections = st.number_input("Sections", 3, 10, 6, step=1, key="num_sections")
         with col_words:
             per_section_words = st.slider("Words per section", 80, 140, 110, step=5, key="per_section_words")
 
-        if st.button("Generate Storybook", use_container_width=True, key="generate_storybook_btn"):
-            if input_mode == "PDF":
-                if uploaded_pdf is None:
-                    st.warning("Please upload a PDF or switch to Text.")
-                    st.stop()
-                try:
-                    with st.spinner("Extracting text from PDF..."):
-                        story_text = preprocess_pdf(uploaded_pdf)
-                except Exception as e:
-                    st.error(f"Failed to extract text from PDF: {e}")
-                    st.stop()
-            else:
-                story_text = st.session_state.get("storybook_text", "")
+        # Track current parameters
+        current_params = {
+            "sections": num_sections,
+            "words": per_section_words,
+            "input_mode": input_mode
+        }
 
-            if not story_text.strip():
-                st.warning("Please enter some story text.")
-            else:
-                with st.spinner("Creating sections & generating images..."):
+        # Check if parameters changed (but don't reset page yet)
+        params_changed = st.session_state.last_generation_params != current_params
+
+        # Only show generate button if content exists
+        can_generate = False
+        story_text_to_use = ""
+        
+        if input_mode == "PDF":
+            if uploaded_pdf is not None:
+                can_generate = True
+        else:
+            story_text_to_use = st.session_state.get("storybook_text", "")
+            if story_text_to_use.strip():
+                can_generate = True
+
+        if can_generate:
+            if st.button("Generate Storybook", use_container_width=True, key="generate_storybook_btn"):
+                # Extract text if PDF mode
+                if input_mode == "PDF":
                     try:
-                        sections = create_sections(
-                            story_text,
-                            desired_sections=num_sections,
-                            per_section_words=int(per_section_words),
-                        )
-                        if not sections:
-                            st.error("Could not create sections from text.")
-                            st.stop()
-                        prompts = create_prompts(sections)
-                        images: List[bytes] = []
-                        progress = st.progress(0)
-                        for i, pr in enumerate(prompts):
-                            try:
-                                img_bytes = generate_segmind_image(pr)
-                                images.append(img_bytes)
-                            except Exception as e:
-                                st.warning(f"Failed to generate image {i+1}: {e}")
-                                # Create a placeholder for failed images
-                                images.append(b'')
-                            progress.progress(int((i + 1) / len(prompts) * 100))
+                        with st.spinner("Extracting text from PDF..."):
+                            story_text_to_use = preprocess_pdf(uploaded_pdf)
                     except Exception as e:
-                        st.error(f"Generation failed: {e}")
+                        st.error(f"Failed to extract text from PDF: {e}")
                         st.stop()
 
-                    st.session_state.storybook_sections = sections
-                    st.session_state.storybook_images = images
-                    st.session_state.storybook_page = 0
-                    st.session_state.storybook_audio = {}
-                    st.success("Story generated! Scroll down to view.")
+                if not story_text_to_use.strip():
+                    st.warning("Please enter some story text.")
+                else:
+                    # Preserve current page if possible
+                    current_page_before_generation = st.session_state.get("storybook_page", 0)
+                    
+                    with st.spinner("Creating sections & generating images..."):
+                        try:
+                            sections = create_sections(
+                                story_text_to_use,
+                                desired_sections=num_sections,
+                                per_section_words=int(per_section_words),
+                            )
+                            if not sections:
+                                st.error("Could not create sections from text.")
+                                st.stop()
+                            
+                            prompts = create_prompts(sections)
+                            images: List[bytes] = []
+                            progress = st.progress(0)
+                            for i, pr in enumerate(prompts):
+                                try:
+                                    img_bytes = generate_segmind_image(pr)
+                                    images.append(img_bytes)
+                                except Exception as e:
+                                    st.warning(f"Failed to generate image {i+1}: {e}")
+                                    images.append(b'')
+                                progress.progress(int((i + 1) / len(prompts) * 100))
+                        except Exception as e:
+                            st.error(f"Generation failed: {e}")
+                            st.stop()
 
+                        # Update content
+                        st.session_state.storybook_sections = sections
+                        st.session_state.storybook_images = images
+                        st.session_state.last_generation_params = current_params.copy()
+                        
+                        # Smart page preservation
+                        new_total_pages = len(sections)
+                        if current_page_before_generation < new_total_pages:
+                            # Keep the same page if it's still valid
+                            st.session_state.storybook_page = current_page_before_generation
+                        else:
+                            # Reset to last valid page
+                            st.session_state.storybook_page = max(0, new_total_pages - 1)
+                        
+                        # Clear audio cache as content changed
+                        st.session_state.storybook_audio = {}
+                        st.success("Story generated! Scroll down to view.")
+        else:
+            st.info("Please provide story content (text or PDF) to generate storybook.")
+
+        # Display existing storybook (separate from generation)
         sections = st.session_state.get("storybook_sections", [])
         images = st.session_state.get("storybook_images", [])
+        
         if sections and images and len(sections) == len(images):
+            st.markdown("---")
+            st.markdown("### Generated Storybook")
+            
             total_pages = len(sections)
             current_page = st.session_state.get("storybook_page", 0)
+            
+            # Ensure page is within bounds (safety check)
             current_page = max(0, min(current_page, total_pages - 1))
             st.session_state.storybook_page = current_page
 
+            # Display current page
             left, right = st.columns([1, 1])
             with left:
                 try:
-                    if images[current_page]:  # Check if image bytes exist
+                    if images[current_page]:
                         st.image(images[current_page], use_container_width=True)
                     else:
                         st.info("Image not available for this page.")
                 except Exception as e:
-                    st.warning(f"Unable to display image for this page: {e}")
+                    st.warning(f"Unable to display image: {e}")
+            
             with right:
-                st.markdown(f"### Page {current_page + 1}")
-                fs_px = 16
-                styled = f"<div style='font-size:{fs_px}px; line-height:1.5;'>{sections[current_page]}</div>"
-                st.markdown(styled, unsafe_allow_html=True)
+                st.markdown(f"### Page {current_page + 1} of {total_pages}")
+                
+                # Show parameter change warning if applicable
+                if params_changed and st.session_state.last_generation_params:
+                    st.info("⚠️ Parameters have changed. Generate new storybook to apply changes.")
+                
+                styled_text = f"<div style='font-size:16px; line-height:1.5;'>{sections[current_page]}</div>"
+                st.markdown(styled_text, unsafe_allow_html=True)
 
+                # Audio narration
                 narrate_key = f"narrate_{current_page}"
                 if st.button("🔊 Narrate this page", key=narrate_key):
-                    # Fixed: Better async handling
                     try:
                         def synthesize_audio(text: str) -> bytes:
                             async def _synthesize():
@@ -330,45 +379,59 @@ elif page == "Storybook Creator":
                 if current_page in st.session_state.storybook_audio:
                     st.audio(st.session_state.storybook_audio[current_page], format="audio/mp3")
 
+            # Navigation controls
             nav1, mid, nav2 = st.columns([1, 2, 1])
             with nav1:
-                if st.button("⬅️ Previous", disabled=(total_pages <= 1), key="prev_storybook"):
-                    st.session_state.storybook_page = (current_page - 1) % total_pages
+                if st.button("⬅️ Previous", disabled=(current_page <= 0), key="prev_storybook"):
+                    st.session_state.storybook_page = max(0, current_page - 1)
+                    st.rerun()
+            with mid:
+                st.markdown(f"<div style='text-align:center; padding-top:8px;'>Page {current_page + 1} of {total_pages}</div>", unsafe_allow_html=True)
             with nav2:
-                if st.button("Next ➡️", disabled=(total_pages <= 1), key="next_storybook"):
-                    st.session_state.storybook_page = (current_page + 1) % total_pages
+                if st.button("Next ➡️", disabled=(current_page >= total_pages - 1), key="next_storybook"):
+                    st.session_state.storybook_page = min(total_pages - 1, current_page + 1)
+                    st.rerun()
 
+            # Export options
             st.markdown("---")
+            st.markdown("### Export Options")
             exp_col1, exp_col2, exp_col3 = st.columns(3)
             with exp_col1:
-                export_font = st.selectbox("Export font", ["Helvetica", "Times-Roman", "Courier"], index=0, key="export_font")
+                export_font = st.selectbox("Font", ["Helvetica", "Times-Roman", "Courier"], key="export_font")
             with exp_col2:
-                export_font_size = st.number_input("Export font size", 10, 18, 12, step=1, key="export_font_size")
+                export_font_size = st.number_input("Font Size", 10, 18, 12, step=1, key="export_font_size")
             with exp_col3:
-                export_layout = st.radio("Layout", ["alternate", "combined"], index=0, horizontal=True, key="export_layout")
+                export_layout = st.radio("Layout", ["alternate", "combined"], horizontal=True, key="export_layout")
 
-            try:
-                pdf_path = create_storybook(
-                    sections=sections,
-                    image_bytes_list=images,
-                    body_font=export_font,
-                    body_font_size=int(export_font_size),
-                    layout=export_layout,
-                )
-                with open(pdf_path, "rb") as f:
-                    pdf_bytes = f.read()
-                st.download_button(
-                    "Export PDF",
-                    data=pdf_bytes,
-                    file_name=os.path.basename(pdf_path),
-                    mime="application/pdf",
-                    key="download_storybook_pdf",
-                )
-            except Exception as e:
-                st.error(f"Failed to generate PDF: {e}")
+            if st.button("Generate PDF Export", key="generate_pdf_btn"):
+                try:
+                    with st.spinner("Creating PDF..."):
+                        pdf_path = create_storybook(
+                            sections=sections,
+                            image_bytes_list=images,
+                            body_font=export_font,
+                            body_font_size=int(export_font_size),
+                            layout=export_layout,
+                        )
+                        with open(pdf_path, "rb") as f:
+                            pdf_bytes = f.read()
+                        st.download_button(
+                            "📄 Download PDF",
+                            data=pdf_bytes,
+                            file_name=os.path.basename(pdf_path),
+                            mime="application/pdf",
+                            key="download_storybook_pdf",
+                        )
+                        st.success("PDF generated successfully!")
+                except Exception as e:
+                    st.error(f"Failed to generate PDF: {e}")
+        
+        elif sections or images:  # Partial content exists
+            st.warning("Storybook generation incomplete. Please regenerate.")
+    
     except ImportError as e:
         st.error(f"Task 3 module not available: {e}")
-
+        
 # --------------------------------------------------
 # Page: Persona Showcase
 # --------------------------------------------------
