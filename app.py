@@ -5,20 +5,14 @@ import streamlit as st
 import pandas as pd
 import edge_tts
 
-# ------------------------------------------------------------------
-# Inject newer SQLite (needed for Chroma on some hosted images)
-# Must precede any indirect chromadb import (we do lazy imports later).
-# ------------------------------------------------------------------
-try:  # pragma: no cover
+# SQLite injection (needed for chromadb on some hosts)
+try:
     __import__("pysqlite3")
     import sys
     sys.modules["sqlite3"] = sys.modules.pop("pysqlite3")  # type: ignore
 except Exception:
     pass
 
-# ------------------------------------------------------------------
-# Paths & Basic Setup
-# ------------------------------------------------------------------
 ASSETS_DIR = os.path.join(os.path.dirname(__file__), "assets")
 OUTPUTS_DIR = os.path.join(ASSETS_DIR, "outputs")
 PERSONAS_DIR = os.path.join(ASSETS_DIR, "personas")
@@ -29,7 +23,6 @@ st.set_page_config(page_title="Storybook Creator", layout="centered")
 
 @st.cache_data
 def load_persona_data():
-    """Load personas_index.csv into a pandas DataFrame (cached)."""
     csv_path = os.path.join(PERSONAS_DIR, "personas_index.csv")
     return pd.read_csv(csv_path)
 
@@ -44,25 +37,21 @@ with st.sidebar:
     st.markdown("---")
 
 
-# ------------------------------------------------------------------
-# Page: Natural Language Search
-# ------------------------------------------------------------------
+# ------------------ Natural Language Search ------------------
 if page == "Natural Language Search":
-    # Lazy import heavy search module only when needed
     from tasks.task_1_search import initialize_search_engine, perform_search
-
     st.subheader("Task 1: Natural Language Search (RAG)")
-    st.caption("Multi-query retrieval + heuristic re-ranking. Click initialize once after startup.")
+    st.caption("Multi-query retrieval + heuristic re-ranking.")
 
-    init_col, reindex_col = st.columns(2)
-    with init_col:
+    c1, c2 = st.columns(2)
+    with c1:
         if st.button("Initialize / Load Collection"):
-            with st.spinner("Initializing ChromaDB and indexing personas..."):
+            with st.spinner("Initializing..."):
                 info = initialize_search_engine()
             st.success(info.get("message", "Initialized"))
-    with reindex_col:
+    with c2:
         if st.button("Force Reindex"):
-            with st.spinner("Rebuilding embeddings..."):
+            with st.spinner("Re-indexing..."):
                 info = initialize_search_engine(force_reindex=True)
             st.success(info.get("message", "Re-index complete"))
 
@@ -75,75 +64,95 @@ if page == "Natural Language Search":
         if not query.strip():
             st.warning("Please enter a query")
         else:
-            with st.spinner("Searching (may call LLM if configured)..."):
+            with st.spinner("Searching..."):
                 results = perform_search(query)
-            st.write("Results:")
             st.json(results)
 
-# ------------------------------------------------------------------
-# Page: PDF to Audiobook
-# ------------------------------------------------------------------
+# ------------------ PDF to Audiobook ------------------
 elif page == "PDF to Audiobook":
-    from tasks.task_2_audiobook import preprocess_pdf, synthesize_all_voices
+    from tasks.task_2_audiobook import (
+        preprocess_pdf,
+        synthesize_all_voices,
+        synthesize_single_voice,
+    )
 
     st.subheader("Task 2: PDF to Audiobook")
-    st.caption("Extracts & cleans text; generates four Edge TTS voices on demand.")
+    st.caption("Upload a PDF, extract the text, generate all voices, then choose & play.")
 
+    # Session state
     if "audiobook_text" not in st.session_state:
-        st.session_state["audiobook_text"] = None
-    if "audiobook_paths" not in st.session_state:
-        st.session_state["audiobook_paths"] = None
+        st.session_state.audiobook_text = None
+    if "audiobook_results" not in st.session_state:
+        # Map voice label -> {"path": str, "error": str|None}
+        st.session_state.audiobook_results = {}
     if "last_pdf_name" not in st.session_state:
-        st.session_state["last_pdf_name"] = None
+        st.session_state.last_pdf_name = None
 
     pdf = st.file_uploader("Upload a PDF", type=["pdf"], key="pdf_upload")
 
     if pdf is not None:
         current_name = getattr(pdf, "name", None)
-        if current_name != st.session_state.get("last_pdf_name"):
-            st.session_state["last_pdf_name"] = current_name
-            st.session_state["audiobook_text"] = None
-            st.session_state["audiobook_paths"] = None
+        if current_name != st.session_state.last_pdf_name:
+            st.session_state.last_pdf_name = current_name
+            st.session_state.audiobook_text = None
+            st.session_state.audiobook_results = {}
             with st.spinner("Extracting and cleaning text..."):
                 try:
                     cleaned_text = preprocess_pdf(pdf)
-                    st.session_state["audiobook_text"] = cleaned_text
+                    st.session_state.audiobook_text = cleaned_text
                     st.success("Text extracted.")
                 except Exception as e:
                     st.error(f"Preprocessing failed: {e}")
 
-    if st.session_state.get("audiobook_text"):
+    if st.session_state.audiobook_text:
         with st.expander("View Extracted Text"):
-            st.write(st.session_state["audiobook_text"])
+            txt = st.session_state.audiobook_text
+            st.write(txt[:10000] + ("..." if len(txt) > 10000 else ""))
 
-        if st.session_state.get("audiobook_paths") is None and st.button("Generate All Voices"):
-            with st.spinner("Generating Edge TTS voices..."):
-                try:
-                    st.session_state["audiobook_paths"] = synthesize_all_voices(
-                        st.session_state["audiobook_text"]
-                    )
-                    st.success("Voices generated!")
-                except Exception as e:
-                    st.error(f"Voice generation failed: {e}")
+        # Single button to generate (sequential inside function for reliability)
+        if not st.session_state.audiobook_results and st.button("Generate All Voices"):
+            with st.spinner("Generating voices..."):
+                st.session_state.audiobook_results = synthesize_all_voices(
+                    st.session_state.audiobook_text,
+                    parallel=False,   # Chosen internally for stability
+                    attempts=2,
+                )
 
-        if st.session_state.get("audiobook_paths"):
+        results = st.session_state.audiobook_results
+
+        if results:
+            # Voice selection radio shown regardless of success; we will display status per voice
             voice = st.radio(
                 "Choose a Voice",
-                ["American Male", "American Female", "British Male", "British Female"],
+                list(results.keys()),
                 horizontal=True,
             )
-            chosen_path = st.session_state["audiobook_paths"].get(voice)
-            if chosen_path and os.path.exists(chosen_path):
-                with open(chosen_path, "rb") as f:
+
+            voice_info = results.get(voice, {})
+            path = (voice_info or {}).get("path") or ""
+            err = (voice_info or {}).get("error")
+
+            if path and os.path.exists(path):
+                with open(path, "rb") as f:
                     audio_bytes = f.read()
                 st.audio(audio_bytes, format="audio/mp3")
-                st.download_button("Download MP3", data=audio_bytes, file_name=os.path.basename(chosen_path))
+                st.download_button(
+                    f"Download {voice}",
+                    data=audio_bytes,
+                    file_name=os.path.basename(path),
+                )
             else:
-                st.info("Click 'Generate All Voices' to produce audio files.")
+                st.error(f"{voice} not available.")
+                if err:
+                    st.caption(f"Error: {err}")
+                if st.button(f"Retry {voice}"):
+                    with st.spinner(f"Retrying {voice}..."):
+                        retry_info = synthesize_single_voice(st.session_state.audiobook_text, voice, attempts=2)
+                        st.session_state.audiobook_results[voice] = retry_info
+                        st.experimental_rerun()
 
-# ------------------------------------------------------------------
-# Page: Storybook Creator
-# ------------------------------------------------------------------
+
+# ------------------ Storybook Creator ------------------
 elif page == "Storybook Creator":
     from tasks.task_2_audiobook import preprocess_pdf
     from tasks.task_3_storybook import (
@@ -154,8 +163,6 @@ elif page == "Storybook Creator":
     )
 
     st.subheader("Task 3: Storybook Creator")
-
-    # Session state
     for key, default in [
         ("storybook_sections", []),
         ("storybook_images", []),
@@ -184,13 +191,7 @@ elif page == "Storybook Creator":
 
     col_sections, col_words = st.columns(2)
     with col_sections:
-        num_sections = st.number_input(
-            "Sections",
-            min_value=3,
-            max_value=10,
-            value=6,
-            step=1,
-        )
+        num_sections = st.number_input("Sections", 3, 10, 6, step=1)
     with col_words:
         per_section_words = st.slider("Words per section", 80, 140, 110, step=5)
 
@@ -205,7 +206,6 @@ elif page == "Storybook Creator":
             except Exception as e:
                 st.error(f"Failed to extract text from PDF: {e}")
                 st.stop()
-
         if not story_text.strip():
             st.warning("Please enter some story text.")
         else:
@@ -230,21 +230,19 @@ elif page == "Storybook Creator":
                     st.error(f"Generation failed: {e}")
                     st.stop()
 
-                st.session_state["storybook_sections"] = sections
-                st.session_state["storybook_images"] = images
-                st.session_state["storybook_page"] = 0
-                st.session_state["storybook_audio"] = {}
+                st.session_state.storybook_sections = sections
+                st.session_state.storybook_images = images
+                st.session_state.storybook_page = 0
+                st.session_state.storybook_audio = {}
                 st.success("Story generated! Scroll down to view.")
 
-    # Viewer
     sections = st.session_state.get("storybook_sections", [])
     images = st.session_state.get("storybook_images", [])
-
     if sections and images and len(sections) == len(images):
         total_pages = len(sections)
         current_page = st.session_state.get("storybook_page", 0)
         current_page = max(0, min(current_page, total_pages - 1))
-        st.session_state["storybook_page"] = current_page
+        st.session_state.storybook_page = current_page
 
         left, right = st.columns([1, 1])
         with left:
@@ -267,23 +265,21 @@ elif page == "Storybook Creator":
                         if chunk["type"] == "audio":
                             audio_data.extend(chunk["data"])
                     return bytes(audio_data)
-
                 try:
                     audio_bytes = asyncio.run(_synthesize_page_audio(sections[current_page]))
-                    st.session_state["storybook_audio"][current_page] = audio_bytes
+                    st.session_state.storybook_audio[current_page] = audio_bytes
                 except Exception as e:
                     st.error(f"TTS failed: {e}")
-
-            if current_page in st.session_state["storybook_audio"]:
-                st.audio(st.session_state["storybook_audio"][current_page], format="audio/mp3")
+            if current_page in st.session_state.storybook_audio:
+                st.audio(st.session_state.storybook_audio[current_page], format="audio/mp3")
 
         nav1, mid, nav2 = st.columns([1, 2, 1])
         with nav1:
             if st.button("⬅️ Previous", disabled=(total_pages <= 1)):
-                st.session_state["storybook_page"] = (current_page - 1) % total_pages
+                st.session_state.storybook_page = (current_page - 1) % total_pages
         with nav2:
             if st.button("Next ➡️", disabled=(total_pages <= 1)):
-                st.session_state["storybook_page"] = (current_page + 1) % total_pages
+                st.session_state.storybook_page = (current_page + 1) % total_pages
 
         st.markdown("---")
         exp_col1, exp_col2, exp_col3 = st.columns(3)
@@ -314,9 +310,7 @@ elif page == "Storybook Creator":
         except Exception as e:
             st.error(f"Failed to generate PDF: {e}")
 
-# ------------------------------------------------------------------
-# Page: Persona Showcase
-# ------------------------------------------------------------------
+# ------------------ Persona Showcase ------------------
 elif page == "Persona Showcase":
     st.subheader("Persona Showcase")
     try:
@@ -329,7 +323,6 @@ elif page == "Persona Showcase":
         total = len(df)
         if "persona_index" not in st.session_state:
             st.session_state.persona_index = 0
-
         col1, col2 = st.columns(2)
         with col1:
             if st.button("Previous"):
@@ -337,24 +330,20 @@ elif page == "Persona Showcase":
         with col2:
             if st.button("Next"):
                 st.session_state.persona_index = (st.session_state.persona_index + 1) % total
-
         idx = st.session_state.persona_index % total
         row = df.iloc[idx]
-
         name = row.get("name", "Unknown")
         age = row.get("age", "?")
         location = row.get("location", "Unknown")
         profession = row.get("profession", "")
         tags = row.get("tags", "")
         filename = row.get("file", None)
-
         st.subheader(str(name))
         m1, m2 = st.columns(2)
         m1.metric("Age", str(age))
         m2.metric("Location", str(location))
         st.markdown(f"**Profession:** {profession}")
         st.markdown(f"**Tags:** {tags}")
-
         if filename:
             persona_path = os.path.join(PERSONAS_DIR, filename)
             with st.expander("View Full Persona Bio"):
